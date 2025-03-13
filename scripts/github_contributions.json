@@ -1,0 +1,33 @@
+{
+    "total_contributions": 3175,
+    "contributions_by_year": {
+        "2024": 2254,
+        "2025": 921
+    },
+    "contributions_by_month": {
+        "2024": {
+            "March": 0,
+            "April": 16,
+            "May": 221,
+            "June": 133,
+            "July": 360,
+            "August": 202,
+            "September": 298,
+            "October": 260,
+            "November": 330,
+            "December": 434
+        },
+        "2025": {
+            "January": 381,
+            "February": 375,
+            "March": 165
+        }
+    },
+    "activity_overview": {
+        "total_commits": 202,
+        "pull_requests_opened": 11,
+        "issues_opened": 0,
+        "code_reviews": 0,
+        "repositories_contributed_to": 63
+    }
+}
