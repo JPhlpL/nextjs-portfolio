@@ -1,63 +1,147 @@
-import { useEffect, useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
-import ProjectSingle from './ProjectSingle';
+import { useEffect, useState } from "react";
+import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import ProjectSingle from "./ProjectSingle";
+
+const ITEMS_PER_PAGE = 10;
 
 function ProjectsGrid() {
-    const [projects, setProjects] = useState([]);
-    const [searchProject, setSearchProject] = useState('');
-    const [selectProject, setSelectProject] = useState('');
+  const [projects, setProjects] = useState([]);
+  const [searchProject, setSearchProject] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
-    // Fetch data from API on component mount
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch('/api/github');
-            const data = await response.json();
-            setProjects(data);
-        }
-        fetchData();
-    }, []);
+  // Fetch data from API
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/api/github");
+      const data = await response.json();
+      setProjects(data);
+    }
+    fetchData();
+  }, []);
 
-    // Filter by search input
-    const filteredProjects = projects.filter(project =>
-        project.project.toLowerCase().includes(searchProject.toLowerCase())
-    );
+  // Extract unique languages including "Unknown"
+  const languages = [
+    "Unknown",
+    ...new Set(projects.map((p) => p.language || "Unknown")),
+  ];
 
-    return (
-        <section className="py-5 sm:py-10 mt-5 sm:mt-10">
-            <div className="text-center">
-                <p className="font-general-medium text-2xl sm:text-4xl mb-1 text-ternary-dark dark:text-ternary-light">
-                    Projects portfolio
-                </p>
-            </div>
+  // Filter projects based on search query & selected language
+  const filteredProjects = projects.filter((project) => {
+    const searchLower = searchProject.toLowerCase();
+    const matchesSearch =
+      project.project.toLowerCase().includes(searchLower) ||
+      (project.language && project.language.toLowerCase().includes(searchLower)) ||
+      (project.topics && project.topics.join(", ").toLowerCase().includes(searchLower)) ||
+      (project.website && project.website.toLowerCase().includes(searchLower)) ||
+      (project.repository_link && project.repository_link.toLowerCase().includes(searchLower));
 
-            <div className="mt-10 sm:mt-16">
-                <h3 className="text-center text-secondary-dark dark:text-ternary-light text-md sm:text-xl mb-3">
-                    Search projects by title or filter by category
-                </h3>
-                <div className="flex justify-between border-b border-primary-light dark:border-secondary-dark pb-3 gap-3">
-                    <div className="flex justify-between gap-2">
-                        <span className="hidden sm:block bg-primary-light dark:bg-ternary-dark p-2.5 shadow-sm rounded-xl cursor-pointer">
-                            <FiSearch className="text-ternary-dark dark:text-ternary-light w-5 h-5" />
-                        </span>
-                        <input
-                            onChange={(e) => setSearchProject(e.target.value)}
-                            className="pl-3 pr-1 sm:px-4 py-2 border border-gray-200 dark:border-secondary-dark rounded-lg text-sm sm:text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light"
-                            type="search"
-                            placeholder="Search Projects"
-                            aria-label="Name"
-                        />
-                    </div>
-                </div>
-            </div>
+    const matchesLanguage = selectedLanguage === "Unknown"
+      ? !project.language
+      : selectedLanguage === "" || project.language === selectedLanguage;
 
-            {/* Projects Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 sm:gap-5">
-                {filteredProjects.map((project, index) => (
-                    <ProjectSingle key={index} {...project} />
-                ))}
-            </div>
-        </section>
-    );
+    return matchesSearch && matchesLanguage;
+  });
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedProjects = filteredProjects.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
+
+  // Handle pagination navigation
+  const goToNextPage = () => setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
+  const goToPreviousPage = () => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
+  const goToPage = (pageNumber) => setCurrentPage(pageNumber);
+
+  return (
+    <section className="py-5 sm:py-10 mt-5 sm:mt-10">
+      <div className="text-center">
+        <p className="font-general-medium text-2xl sm:text-4xl mb-1 text-ternary-dark dark:text-ternary-light">
+          Projects Portfolio
+        </p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          Total Projects: {filteredProjects.length}
+        </p>
+      </div>
+
+      {/* Search & Filter Row */}
+      <div className="mt-10 sm:mt-16 flex flex-col sm:flex-row justify-between items-center border-b border-primary-light dark:border-secondary-dark pb-3 gap-3">
+        {/* Search Input */}
+        <div className="relative w-full sm:w-2/3">
+          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-ternary-dark dark:text-ternary-light w-5 h-5" />
+          <input
+            onChange={(e) => setSearchProject(e.target.value)}
+            className="pl-10 pr-4 py-2 w-full border border-gray-200 dark:border-secondary-dark rounded-lg text-sm sm:text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light focus:ring-2 focus:ring-primary-light dark:focus:ring-secondary-dark"
+            type="search"
+            placeholder="Search Projects, Topics, Language, or Web Links"
+          />
+        </div>
+
+        {/* Language Filter */}
+        <select
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+          className="p-2 w-full sm:w-1/3 border border-gray-200 dark:border-secondary-dark rounded-lg text-sm sm:text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light focus:ring-2 focus:ring-primary-light dark:focus:ring-secondary-dark"
+        >
+          <option value="">All Languages</option>
+          {languages.map((lang, index) => (
+            <option key={index} value={lang}>
+              {lang}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 sm:gap-5">
+        {paginatedProjects.map((project, index) => (
+          <ProjectSingle key={index} {...project} />
+        ))}
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="flex justify-center items-center mt-6">
+        {/* Previous Button */}
+        <button
+          onClick={goToPreviousPage}
+          disabled={currentPage === 1}
+          className={`px-4 py-2 mx-1 rounded-md flex items-center ${
+            currentPage === 1 ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600 text-white"
+          }`}
+        >
+          <FiChevronLeft className="w-5 h-5" />
+        </button>
+
+        {/* Page Numbers */}
+        {[...Array(totalPages)].map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToPage(index + 1)}
+            className={`px-3 py-2 mx-1 rounded-md ${
+              currentPage === index + 1
+                ? "bg-indigo-600 text-white"
+                : "bg-gray-300 hover:bg-gray-400"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
+
+        {/* Next Button */}
+        <button
+          onClick={goToNextPage}
+          disabled={currentPage === totalPages}
+          className={`px-4 py-2 mx-1 rounded-md flex items-center ${
+            currentPage === totalPages ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600 text-white"
+          }`}
+        >
+          <FiChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+    </section>
+  );
 }
 
 export default ProjectsGrid;
