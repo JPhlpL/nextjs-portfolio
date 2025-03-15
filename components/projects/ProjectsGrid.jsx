@@ -21,10 +21,8 @@ function ProjectsGrid() {
   }, []);
 
   // Extract unique languages including "Unknown"
-  const languages = [
-    "Unknown",
-    ...new Set(projects.map((p) => p.language || "Unknown")),
-  ];
+  const languages = [...new Set(projects.map((p) => p.language || "Unknown"))];
+
 
   // Filter projects based on search query & selected language
   const filteredProjects = projects.filter((project) => {
