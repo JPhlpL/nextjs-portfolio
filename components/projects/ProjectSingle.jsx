@@ -12,8 +12,10 @@ const ProjectSingle = ({ id, project, description, language, date_created, websi
             className="flex flex-col h-full"
         >
             {/* Main Box - Clickable to Project Details */}
-            <Link href={`/projects/${id}`} passHref> 
+            <Link href={`/projects/${project}`} passHref> 
+
             {/* TODO: NEED TO CHANGE THIS INTO A INTERCHANGEBLE VALUE LIKE /projects/${id} AND NEED TO INTERCHANGEABLE THE PAGES/PROJECTS/[id].jsx */}
+                
                 <div className="rounded-xl shadow-lg hover:shadow-xl cursor-pointer bg-secondary-light dark:bg-ternary-dark flex flex-col h-full min-h-[250px] p-5">
                     <div className="flex justify-between items-center">
                         {/* Project Title */}
