@@ -93,11 +93,12 @@ function ProjectsGrid() {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 sm:gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 gap-y-4 sm:gap-5">
         {paginatedProjects.map((project, index) => (
           <ProjectSingle key={index} {...project} />
         ))}
       </div>
+
 
       {/* Pagination Controls */}
       <div className="flex justify-center items-center mt-6">
