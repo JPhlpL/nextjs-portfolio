@@ -741,7 +741,7 @@ export const projectsData = [
 			// 		id: uuidv4(),
 			// 		name: 'Instagram',
 			// 		icon: <FiInstagram />,
-			// 		url: 'https://instagram.com/realstoman',
+			// 		url: 'https://instagram.com/realstoman',	
 			// 	},
 			// 	{
 			// 		id: uuidv4(),
