@@ -33,20 +33,6 @@ function AppHeader() {
     }
   }
 
-  function showHireMeModal() {
-    if (!showModal) {
-      document
-        .getElementsByTagName("html")[0]
-        .classList.add("overflow-y-hidden");
-      setShowModal(true);
-    } else {
-      document
-        .getElementsByTagName("html")[0]
-        .classList.remove("overflow-y-hidden");
-      setShowModal(false);
-    }
-  }
-
   return (
     <motion.nav
       initial={{ opacity: 0 }}
@@ -62,11 +48,15 @@ function AppHeader() {
           <div>
             {isClient && (
               <div
-			  onClick={() => setTheme(activeTheme)}
-			  aria-label="Theme Switcher"
-			  className="ml-8 bg-primary-light dark:bg-ternary-dark p-3 shadow-sm rounded-xl cursor-pointer"
-			>
-                {activeTheme === "dark" ? <FiMoon className="text-ternary-dark hover:text-gray-400 dark:text-ternary-light dark:hover:text-primary-light text-xl" /> : <FiSun className="text-gray-200 hover:text-gray-50 text-xl" />}
+                onClick={() => setTheme(activeTheme)}
+                aria-label="Theme Switcher"
+                className="ml-8 bg-primary-light dark:bg-ternary-dark p-3 shadow-sm rounded-xl cursor-pointer"
+              >
+                {activeTheme === "dark" ? (
+                  <FiMoon className="text-ternary-dark hover:text-gray-400 dark:text-ternary-light dark:hover:text-primary-light text-xl" />
+                ) : (
+                  <FiSun className="text-gray-200 hover:text-gray-50 text-xl" />
+                )}
               </div>
             )}
           </div>
@@ -123,15 +113,7 @@ function AppHeader() {
               Contact
             </Link>
           </div>
-          <div className="border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark">
-            <button
-              onClick={showHireMeModal}
-              className="font-general-medium sm:hidden block text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-sm px-4 py-2 mt-2 duration-300 w-24"
-              aria-label="Hire Me Button"
-            >
-              Hire Me
-            </button>
-          </div>
+          <div className="border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark"></div>
         </div>
 
         {/* Header links large screen */}
@@ -165,22 +147,8 @@ function AppHeader() {
 
         {/* Header right section buttons */}
         <div className="hidden sm:flex justify-between items-center flex-col md:flex-row">
-          <div className="hidden md:flex">
-            <button
-              onClick={showHireMeModal}
-              className="text-md font-general-medium bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-md px-5 py-2.5 duration-300"
-              aria-label="Hire Me Button"
-            >
-              Hire Me
-            </button>
-          </div>
+          <div className="hidden md:flex"></div>
         </div>
-      </div>
-      <div>
-        {showModal ? (
-          <HireMeModal onClose={showHireMeModal} onRequest={showHireMeModal} />
-        ) : null}
-        {showModal ? showHireMeModal : null}
       </div>
     </motion.nav>
   );

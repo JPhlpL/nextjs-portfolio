@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import AboutClients from '../components/about/AboutClients';
+import AboutMainStack from '../components/about/AboutMainStack';
 import AboutCounter from '../components/about/AboutCounter';
 import AboutMeBio from '../components/about/AboutMeBio';
 import PagesMetaHead from '../components/PagesMetaHead';
@@ -33,7 +33,7 @@ function about() {
 				exit={{ opacity: 0 }}
 				className="container mx-auto"
 			>
-				<AboutClients />
+				<AboutMainStack />
 			</motion.div>
 		</div>
 	);
