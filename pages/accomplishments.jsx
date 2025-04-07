@@ -165,6 +165,14 @@ function Accomplishments() {
           }}
           slideShow
 		  disableToolbar
+		//   theme={{
+			// primary: "white",
+			// secondary: "white",
+			// cardBgColor: "yellow",
+			// cardForeColor: "violet",
+			// titleColor: "black",
+			// titleColorActive: "red",
+		//   }}
         />
       </div>
     </div>
