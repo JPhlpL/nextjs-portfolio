@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Chrono } from "react-chrono";
+import itemsData from "../public/json/accomplishments.json";  // Will do it as backward
 
 function Accomplishments() {
   const [isClient, setIsClient] = useState(false);
@@ -8,153 +9,13 @@ function Accomplishments() {
     setIsClient(true);
   }, []);
 
-  const items = [
-    {
-      title: "May 1940",
-      cardTitle: "Dunkirk",
-      url: "http://www.history.com",
-      cardSubtitle:
-        "Men of the British Expeditionary Force (BEF) wade out to..",
-      cardDetailedText:
-        "Men of the British Expeditionary Force (BEF) wade out to..",
-      media: {
-        type: "IMAGE",
-        source: {
-          url: "http://someurl/image.jpg",
-        },
-      },
-    },
-    {
-      title: "May 1945",
-      cardTitle: "Dunkirk",
-      url: "http://www.history.com",
-      cardSubtitle:
-        "Men of the British Expeditionary Force (BEF) wade out to..",
-      cardDetailedText:
-        "Men of the British Expeditionary Force (BEF) wade out to..",
-      media: {
-        type: "IMAGE",
-        source: {
-          url: "http://someurl/image.jpg",
-        },
-      },
-    },
-	{
-		title: "May 1946",
-		cardTitle: "Dunkirk",
-		url: "http://www.history.com",
-		cardSubtitle:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		cardDetailedText:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		media: {
-		  type: "IMAGE",
-		  source: {
-			url: "http://someurl/image.jpg",
-		  },
-		},
-	  },
-	  {
-		title: "May 1947",
-		cardTitle: "Dunkirk",
-		url: "http://www.history.com",
-		cardSubtitle:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		cardDetailedText:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		media: {
-		  type: "IMAGE",
-		  source: {
-			url: "http://someurl/image.jpg",
-		  },
-		},
-	  },
-	  {
-		title: "May 1948",
-		cardTitle: "Dunkirk",
-		url: "http://www.history.com",
-		cardSubtitle:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		cardDetailedText:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		media: {
-		  type: "IMAGE",
-		  source: {
-			url: "http://someurl/image.jpg",
-		  },
-		},
-	  },
-	  {
-		title: "May 1949",
-		cardTitle: "Dunkirk",
-		url: "http://www.history.com",
-		cardSubtitle:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		cardDetailedText:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		media: {
-		  type: "IMAGE",
-		  source: {
-			url: "http://someurl/image.jpg",
-		  },
-		},
-	  },
-	  {
-		title: "May 1950",
-		cardTitle: "Dunkirk",
-		url: "http://www.history.com",
-		cardSubtitle:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		cardDetailedText:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		media: {
-		  type: "IMAGE",
-		  source: {
-			url: "http://someurl/image.jpg",
-		  },
-		},
-	  },
-	  {
-		title: "May 1951",
-		cardTitle: "Dunkirk",
-		url: "http://www.history.com",
-		cardSubtitle:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		cardDetailedText:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		media: {
-		  type: "IMAGE",
-		  source: {
-			url: "http://someurl/image.jpg",
-		  },
-		},
-	  },
-	  {
-		title: "May 1952",
-		cardTitle: "Dunkirk",
-		url: "http://www.history.com",
-		cardSubtitle:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		cardDetailedText:
-		  "Men of the British Expeditionary Force (BEF) wade out to..",
-		media: {
-		  type: "IMAGE",
-		  source: {
-			url: "http://someurl/image.jpg",
-		  },
-		},
-	  },
-  ];
-
-  if (!isClient) {
-    return null; // or a loading spinner
-  }
+  if (!isClient) return null;
 
   return (
     <div className="App">
       <div style={{ width: "100%" }}>
         <Chrono
-          items={items}
+          items={itemsData}
           mode="HORIZONTAL"
           showCardsHorizontal
           cardWidth={450}
@@ -164,15 +25,7 @@ function Accomplishments() {
             title: "1rem"
           }}
           slideShow
-		  disableToolbar
-		//   theme={{
-			// primary: "white",
-			// secondary: "white",
-			// cardBgColor: "yellow",
-			// cardForeColor: "violet",
-			// titleColor: "black",
-			// titleColorActive: "red",
-		//   }}
+          disableToolbar
         />
       </div>
     </div>
