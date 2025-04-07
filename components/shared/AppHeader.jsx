@@ -110,6 +110,12 @@ function AppHeader() {
           </div>
 
           <div className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
+            <Link href="/accomplishments" aria-label="accomplishments">
+            Accomplishments
+            </Link>
+          </div>
+
+          <div className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
             <Link href="/contact" aria-label="Contact">
               Contact
             </Link>
@@ -131,11 +137,19 @@ function AppHeader() {
           >
             <Link href="/about">About Me</Link>
           </div>
+
           <div
             className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
             aria-label="Projects"
           >
             <Link href="/projects">Projects</Link>
+          </div>
+
+          <div
+            className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
+            aria-label="Accomplishments"
+          >
+            <Link href="/accomplishments">Accomplishments</Link>
           </div>
 
           <div
