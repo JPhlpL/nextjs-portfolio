@@ -245,3 +245,14 @@ a {
 		opacity: 0.5;
 	}
 }
+
+/* Light mode line color */
+.vertical-timeline::before {
+	background: #cdcfd2 !important; /* gray-200 */
+  }
+  
+  /* Dark mode line color */
+  .dark .vertical-timeline::before {
+	background: #e5e7eb !important; /* blue-400 */
+  }
+  
