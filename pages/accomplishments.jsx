@@ -19,39 +19,44 @@ const Accomplishments = () => {
     setSelectedEvent(null);
   };
 
-  // TODO: NEED TO FIX MODAL
   return (
-    <div>
+    <div className="p-4">
       <VerticalTimeline>
         {/* Timeline Element #1 */}
         <VerticalTimelineElement
-  className="vertical-timeline-element--work cursor-pointer"
-  contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-  contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
-  date="2011 - present"
-  iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-  icon={<MdWork />}
-  onClick={() =>
-    openModal({
-      date: "2011 - present",
-      title: "Creative Director",
-      subtitle: "Miami, FL",
-      description:
-        "Creative Direction, User Experience, Visual Design, Project Management, Team Leading",
-      image: "https://jphlpl-portfolio-bucket.s3.ap-southeast-1.amazonaws.com/accomplishments/Thesis2.jpg"
-    })
-  }
->
-  {/* Display a small image inside the element */}
-  <img
-    src="https://jphlpl-portfolio-bucket.s3.ap-southeast-1.amazonaws.com/accomplishments/Thesis2.jpg"
-    alt="Creative Director"
-    className="w-full mb-2 rounded"
-  />
-  <h3 className="vertical-timeline-element-title">Creative Director</h3>
-  <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-</VerticalTimelineElement>
-
+          className="vertical-timeline-element--work cursor-pointer"
+          contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+          contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+          date="2011 - present"
+          iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+          icon={<MdWork />}
+        >
+          <div 
+            onClick={() =>
+              openModal({
+                date: "2011 - present",
+                title: "Creative Director",
+                subtitle: "Miami, FL",
+                description:
+                  "Creative Direction, User Experience, Visual Design, Project Management, Team Leading",
+                image: "https://jphlpl-portfolio-bucket.s3.ap-southeast-1.amazonaws.com/accomplishments/Thesis2.jpg"
+              })
+            }
+            className="cursor-pointer"
+          >
+            <img
+              src="https://jphlpl-portfolio-bucket.s3.ap-southeast-1.amazonaws.com/accomplishments/Thesis2.jpg"
+              alt="Creative Director"
+              className="w-full mb-2 rounded"
+            />
+            <h3 className="vertical-timeline-element-title text-gray-100 dark:text-gray-100">
+              Creative Director
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle text-gray-200 dark:text-gray-300">
+              Miami, FL
+            </h4>
+          </div>
+        </VerticalTimelineElement>
 
         {/* Timeline Element #2 */}
         <VerticalTimelineElement
@@ -59,24 +64,32 @@ const Accomplishments = () => {
           date="2010 - 2011"
           iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
           icon={<MdWork />}
-          onClick={() =>
-            openModal({
-              date: "2010 - 2011",
-              title: "Art Director",
-              subtitle: "San Francisco, CA",
-              description:
-                "Creative Direction, User Experience, Visual Design, SEO, Online Marketing",
-              image: "https://jphlpl-portfolio-bucket.s3.ap-southeast-1.amazonaws.com/accomplishments/Thesis2.jpg"
-            })
-          }
         >
-          <img
-            src="/images/work_art_director.jpg"
-            alt="Art Director"
-            className="w-full mb-2 rounded"
-          />
-          <h3 className="vertical-timeline-element-title">Art Director</h3>
-          <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+          <div 
+            onClick={() =>
+              openModal({
+                date: "2010 - 2011",
+                title: "Art Director",
+                subtitle: "San Francisco, CA",
+                description:
+                  "Creative Direction, User Experience, Visual Design, SEO, Online Marketing",
+                image: "https://jphlpl-portfolio-bucket.s3.ap-southeast-1.amazonaws.com/accomplishments/Thesis2.jpg"
+              })
+            }
+            className="cursor-pointer"
+          >
+            <img
+              src="/images/work_art_director.jpg"
+              alt="Art Director"
+              className="w-full mb-2 rounded"
+            />
+            <h3 className="vertical-timeline-element-title text-gray-800 dark:text-gray-100">
+              Art Director
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle text-gray-600 dark:text-gray-300">
+              San Francisco, CA
+            </h4>
+          </div>
         </VerticalTimelineElement>
 
         {/* Timeline Element #3 */}
@@ -85,23 +98,31 @@ const Accomplishments = () => {
           date="2008 - 2010"
           iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
           icon={<MdWork />}
-          onClick={() =>
-            openModal({
-              date: "2008 - 2010",
-              title: "Web Designer",
-              subtitle: "Los Angeles, CA",
-              description: "User Experience, Visual Design",
-              image: "/images/work_web_designer.jpg"
-            })
-          }
         >
-          <img
-            src="/images/work_web_designer.jpg"
-            alt="Web Designer"
-            className="w-full mb-2 rounded"
-          />
-          <h3 className="vertical-timeline-element-title">Web Designer</h3>
-          <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
+          <div 
+            onClick={() =>
+              openModal({
+                date: "2008 - 2010",
+                title: "Web Designer",
+                subtitle: "Los Angeles, CA",
+                description: "User Experience, Visual Design",
+                image: "/images/work_web_designer.jpg"
+              })
+            }
+            className="cursor-pointer"
+          >
+            <img
+              src="/images/work_web_designer.jpg"
+              alt="Web Designer"
+              className="w-full mb-2 rounded"
+            />
+            <h3 className="vertical-timeline-element-title text-gray-800 dark:text-gray-100">
+              Web Designer
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle text-gray-600 dark:text-gray-300">
+              Los Angeles, CA
+            </h4>
+          </div>
         </VerticalTimelineElement>
 
         {/* Timeline Element #4 */}
@@ -110,23 +131,31 @@ const Accomplishments = () => {
           date="2006 - 2008"
           iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
           icon={<MdWork />}
-          onClick={() =>
-            openModal({
-              date: "2006 - 2008",
-              title: "Web Designer",
-              subtitle: "San Francisco, CA",
-              description: "User Experience, Visual Design",
-              image: "/images/work_web_designer_sf.jpg"
-            })
-          }
         >
-          <img
-            src="/images/work_web_designer_sf.jpg"
-            alt="Web Designer"
-            className="w-full mb-2 rounded"
-          />
-          <h3 className="vertical-timeline-element-title">Web Designer</h3>
-          <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
+          <div 
+            onClick={() =>
+              openModal({
+                date: "2006 - 2008",
+                title: "Web Designer",
+                subtitle: "San Francisco, CA",
+                description: "User Experience, Visual Design",
+                image: "/images/work_web_designer_sf.jpg"
+              })
+            }
+            className="cursor-pointer"
+          >
+            <img
+              src="/images/work_web_designer_sf.jpg"
+              alt="Web Designer"
+              className="w-full mb-2 rounded"
+            />
+            <h3 className="vertical-timeline-element-title text-gray-800 dark:text-gray-100">
+              Web Designer
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle text-gray-600 dark:text-gray-300">
+              San Francisco, CA
+            </h4>
+          </div>
         </VerticalTimelineElement>
 
         {/* Timeline Element #5 */}
@@ -135,25 +164,31 @@ const Accomplishments = () => {
           date="April 2013"
           iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
           icon={<MdSchool />}
-          onClick={() =>
-            openModal({
-              date: "April 2013",
-              title: "Content Marketing for Web, Mobile and Social Media",
-              subtitle: "Online Course",
-              description: "Strategy, Social Media",
-              image: "/images/education_content_marketing.jpg"
-            })
-          }
         >
-          <img
-            src="/images/education_content_marketing.jpg"
-            alt="Content Marketing"
-            className="w-full mb-2 rounded"
-          />
-          <h3 className="vertical-timeline-element-title">
-            Content Marketing for Web, Mobile and Social Media
-          </h3>
-          <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
+          <div 
+            onClick={() =>
+              openModal({
+                date: "April 2013",
+                title: "Content Marketing for Web, Mobile and Social Media",
+                subtitle: "Online Course",
+                description: "Strategy, Social Media",
+                image: "/images/education_content_marketing.jpg"
+              })
+            }
+            className="cursor-pointer"
+          >
+            <img
+              src="/images/education_content_marketing.jpg"
+              alt="Content Marketing"
+              className="w-full mb-2 rounded"
+            />
+            <h3 className="vertical-timeline-element-title text-gray-800 dark:text-gray-100">
+              Content Marketing for Web, Mobile and Social Media
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle text-gray-600 dark:text-gray-300">
+              Online Course
+            </h4>
+          </div>
         </VerticalTimelineElement>
 
         {/* Timeline Element #6 */}
@@ -162,23 +197,31 @@ const Accomplishments = () => {
           date="November 2012"
           iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
           icon={<MdSchool />}
-          onClick={() =>
-            openModal({
-              date: "November 2012",
-              title: "Agile Development Scrum Master",
-              subtitle: "Certification",
-              description: "Creative Direction, User Experience, Visual Design",
-              image: "/images/education_scrum_master.jpg"
-            })
-          }
         >
-          <img
-            src="/images/education_scrum_master.jpg"
-            alt="Scrum Master"
-            className="w-full mb-2 rounded"
-          />
-          <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
-          <h4 className="vertical-timeline-element-subtitle">Certification</h4>
+          <div 
+            onClick={() =>
+              openModal({
+                date: "November 2012",
+                title: "Agile Development Scrum Master",
+                subtitle: "Certification",
+                description: "Creative Direction, User Experience, Visual Design",
+                image: "/images/education_scrum_master.jpg"
+              })
+            }
+            className="cursor-pointer"
+          >
+            <img
+              src="/images/education_scrum_master.jpg"
+              alt="Scrum Master"
+              className="w-full mb-2 rounded"
+            />
+            <h3 className="vertical-timeline-element-title text-gray-800 dark:text-gray-100">
+              Agile Development Scrum Master
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle text-gray-600 dark:text-gray-300">
+              Certification
+            </h4>
+          </div>
         </VerticalTimelineElement>
 
         {/* Timeline Element #7 */}
@@ -187,26 +230,31 @@ const Accomplishments = () => {
           date="2002 - 2006"
           iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
           icon={<MdSchool />}
-          onClick={() =>
-            openModal({
-              date: "2002 - 2006",
-              title:
-                "Bachelor of Science in Interactive Digital Media Visual Imaging",
-              subtitle: "Bachelor Degree",
-              description: "Creative Direction, Visual Design",
-              image: "/images/education_bachelor.jpg"
-            })
-          }
         >
-          <img
-            src="/images/education_bachelor.jpg"
-            alt="Bachelor Degree"
-            className="w-full mb-2 rounded"
-          />
-          <h3 className="vertical-timeline-element-title">
-            Bachelor of Science in Interactive Digital Media Visual Imaging
-          </h3>
-          <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
+          <div 
+            onClick={() =>
+              openModal({
+                date: "2002 - 2006",
+                title: "Bachelor of Science in Interactive Digital Media Visual Imaging",
+                subtitle: "Bachelor Degree",
+                description: "Creative Direction, Visual Design",
+                image: "/images/education_bachelor.jpg"
+              })
+            }
+            className="cursor-pointer"
+          >
+            <img
+              src="/images/education_bachelor.jpg"
+              alt="Bachelor Degree"
+              className="w-full mb-2 rounded"
+            />
+            <h3 className="vertical-timeline-element-title text-gray-800 dark:text-gray-100">
+              Bachelor of Science in Interactive Digital Media Visual Imaging
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle text-gray-600 dark:text-gray-300">
+              Bachelor Degree
+            </h4>
+          </div>
         </VerticalTimelineElement>
 
         {/* Timeline Element for Special Recognition */}
@@ -214,16 +262,24 @@ const Accomplishments = () => {
           className="cursor-pointer"
           iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
           icon={<MdStar />}
-          onClick={() =>
-            openModal({
-              date: "",
-              title: "Special Recognition",
-              subtitle: "",
-              description: "Special recognition for outstanding contribution",
-              image: "/images/special_recognition.jpg"
-            })
-          }
-        />
+        >
+          <div 
+            onClick={() =>
+              openModal({
+                date: "",
+                title: "Special Recognition",
+                subtitle: "",
+                description: "Special recognition for outstanding contribution",
+                image: "/images/special_recognition.jpg"
+              })
+            }
+            className="cursor-pointer"
+          >
+            <h3 className="vertical-timeline-element-title text-gray-800 dark:text-gray-100">
+              Special Recognition
+            </h3>
+          </div>
+        </VerticalTimelineElement>
       </VerticalTimeline>
 
       {/* Modal (conditionally rendered) */}
