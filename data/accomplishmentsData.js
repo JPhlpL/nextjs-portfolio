@@ -138,8 +138,8 @@ const accomplishmentsData = [
     cardTitle: "Lorem Ipsum",
     image: "/images/accomplishments/accomplishment5.jpg",
     cardDetailedText: "Lorem Ipsum",
-    icon: MdWork,
-    iconStyle: { background: "rgb(59, 130, 246)", color: "#fff" }, // Tailwind pink-500
+    icon: MdStar,
+    iconStyle: { background: "#DAB060", color: "#fff" }, // Tailwind pink-500
     contentStyle: {
       background: "#f3f4f6", // Tailwind gray-100
       color: "#1f2937", // Tailwind gray-800
