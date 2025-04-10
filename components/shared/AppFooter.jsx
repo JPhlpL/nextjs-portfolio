@@ -1,4 +1,4 @@
-import { FiGithub, FiLinkedin, FiGlobe } from "react-icons/fi"
+import { FiGithub, FiLinkedin, FiGlobe, FiFacebook } from "react-icons/fi"
 
 const socialLinks = [
   {
@@ -15,6 +15,11 @@ const socialLinks = [
     id: 3,
     icon: <FiLinkedin />,
     url: "https://www.linkedin.com/in/jplominoque/",
+  },
+  {
+    id: 4,
+    icon: <FiFacebook />,
+    url: "https://www.facebook.com/Lipip.JP/",
   },
 ]
 

@@ -94,13 +94,13 @@ function AppHeader() {
           }
         >
           <div className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
-            <Link href="/" aria-label="About Me">
+            <Link href="/" aria-label="About">
               Home
             </Link>
           </div>
           <div className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
-            <Link href="/about" aria-label="About Me">
-              About Me
+            <Link href="/about" aria-label="About">
+              About
             </Link>
           </div>
 
@@ -140,9 +140,9 @@ function AppHeader() {
           </div>
           <div
             className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
-            aria-label="About Me"
+            aria-label="About"
           >
-            <Link href="/about">About Me</Link>
+            <Link href="/about">About</Link>
           </div>
 
           <div
@@ -157,13 +157,11 @@ function AppHeader() {
             aria-label="Projects"
           >
             <Link href="/certificates">Certificates</Link>
-            aria-label="Accomplishments"
-          >
           </div> 
 
           <div
             className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
-            aria-label="Projects"
+            aria-label="Accomplishments"
           >  
             <Link href="/accomplishments">Accomplishments</Link>
           </div>
