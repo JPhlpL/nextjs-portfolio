@@ -82,6 +82,11 @@ const Accomplishments = () => {
             </button>
             <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
               {selectedEvent.title}
+              </h2>
+              <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+              ({selectedEvent.date && (
+              selectedEvent.date
+            )})
             </h2>
             <p className="mb-4 text-gray-700 dark:text-gray-300">
               {selectedEvent.description}
@@ -91,9 +96,7 @@ const Accomplishments = () => {
               alt={selectedEvent.title}
               className="w-full h-64 object-contain rounded mb-2"
             />
-            {selectedEvent.date && (
-              <p className="mt-2 text-sm text-gray-500">{selectedEvent.date}</p>
-            )}
+            
           </div>
         </div>
       )}
