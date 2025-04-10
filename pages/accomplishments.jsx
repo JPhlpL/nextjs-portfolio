@@ -7,16 +7,47 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import accomplishmentsData from "../data/accomplishmentsData";
+// Import creative arrow icons for the carousel navigation
+import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 
 const Accomplishments = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
+  // Track current index for carousel images
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const openModal = (eventData) => {
     setSelectedEvent(eventData);
+    setCurrentImageIndex(0); // Reset carousel index whenever modal opens
   };
 
   const closeModal = () => {
     setSelectedEvent(null);
+  };
+
+  // Navigate to the previous image in the carousel
+  const showPreviousImage = () => {
+    if (
+      selectedEvent &&
+      selectedEvent.images &&
+      selectedEvent.images.length > 0
+    ) {
+      setCurrentImageIndex((prevIndex) =>
+        (prevIndex - 1 + selectedEvent.images.length) % selectedEvent.images.length
+      );
+    }
+  };
+
+  // Navigate to the next image in the carousel
+  const showNextImage = () => {
+    if (
+      selectedEvent &&
+      selectedEvent.images &&
+      selectedEvent.images.length > 0
+    ) {
+      setCurrentImageIndex((prevIndex) =>
+        (prevIndex + 1) % selectedEvent.images.length
+      );
+    }
   };
 
   return (
@@ -41,7 +72,9 @@ const Accomplishments = () => {
                     date: item.date,
                     title: item.cardTitle,
                     description: item.cardDetailedText,
+                    // support both single and multiple image scenarios:
                     image: item.image,
+                    images: item.images, // (optional) array of images for carousel
                   })
                 }
                 className="cursor-pointer flex items-center gap-4"
@@ -51,7 +84,6 @@ const Accomplishments = () => {
                   alt={item.cardTitle}
                   className="mb-3 rounded shadow-md w-[120px] h-[120px] object-contain"
                 />
-
                 <div>
                   <h3 className="vertical-timeline-element-title font-semibold text-gray-800">
                     {item.cardTitle}
@@ -64,7 +96,7 @@ const Accomplishments = () => {
         })}
       </VerticalTimeline>
 
-      {/* Modal (conditionally rendered) */}
+      {/* Modal with Carousel */}
       {selectedEvent && (
         <div
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
@@ -81,22 +113,49 @@ const Accomplishments = () => {
               X
             </button>
             <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
-              {selectedEvent.title}
-              </h2>
-              <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
-              ({selectedEvent.date && (
-              selectedEvent.date
-            )})
+              {selectedEvent.title}{" "}
+              <span className="text-base font-medium">
+                ({selectedEvent.date})
+              </span>
             </h2>
             <p className="mb-4 text-gray-700 dark:text-gray-300">
               {selectedEvent.description}
             </p>
-            <img
-              src={selectedEvent.image}
-              alt={selectedEvent.title}
-              className="w-full h-64 object-contain rounded mb-2"
-            />
-            
+            <div className="relative flex justify-center items-center">
+              {/* Render Previous button if multiple images exist */}
+              {selectedEvent.images &&
+                selectedEvent.images.length > 1 && (
+                  <button
+                    onClick={showPreviousImage}
+                    className="absolute left-0 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none"
+                  >
+                    <MdArrowBackIosNew size={20} />
+                  </button>
+                )}
+
+              <img
+                src={
+                  // If an array of images exists use carousel; otherwise fallback to single image
+                  selectedEvent.images &&
+                  selectedEvent.images.length > 0
+                    ? selectedEvent.images[currentImageIndex]
+                    : selectedEvent.image
+                }
+                alt={selectedEvent.title}
+                className="w-full h-64 object-contain rounded mb-2 transition-transform duration-300"
+              />
+
+              {/* Render Next button if multiple images exist */}
+              {selectedEvent.images &&
+                selectedEvent.images.length > 1 && (
+                  <button
+                    onClick={showNextImage}
+                    className="absolute right-0 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none"
+                  >
+                    <MdArrowForwardIos size={20} />
+                  </button>
+                )}
+            </div>
           </div>
         </div>
       )}
