@@ -3,6 +3,7 @@ import AboutMainStack from '../components/about/AboutMainStack';
 import AboutCounter from '../components/about/AboutCounter';
 import AboutMeBio from '../components/about/AboutMeBio';
 import PagesMetaHead from '../components/PagesMetaHead';
+import AboutOtherStack from '../components/about/AboutOtherStack';
 
 function about() {
 	return (
@@ -34,6 +35,8 @@ function about() {
 				className="container mx-auto"
 			>
 				<AboutMainStack />
+				<AboutOtherStack />
+
 			</motion.div>
 		</div>
 	);
