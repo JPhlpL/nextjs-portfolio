@@ -5,7 +5,13 @@
     "language": "Python",
     "date_created": "2024-04-19T10:38:20Z",
     "stars": 0,
-    "images": ["/images/projects/default1.png"],
+    "images": [
+      "/images/projects/taja1.png",
+      "/images/projects/taja2.png",
+      "/images/projects/taja3.png",
+      "/images/projects/taja4.png",
+      "/images/projects/taja5.png"
+    ],
     "website": "https://www.taja.ai/",
     "topics": [
       "FastAPI",
