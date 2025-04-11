@@ -22,47 +22,11 @@ const ProjectSingle = ({ id, project, description, language, date_created, websi
                         <p className="font-general-medium text-lg md:text-xl text-ternary-dark dark:text-ternary-light">
                             {project}
                         </p>
-
-                        {/* Icons Row */}
-                        <div className="flex items-center gap-3">
-                            {/* GitHub Icon */}
-                            {repository_link && (
-                                <a
-                                    href={repository_link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    data-tooltip-id={`tooltip-github-${id}`}
-                                >
-                                    <FiGithub className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white w-5 h-5" />
-                                    <Tooltip id={`tooltip-github-${id}`} place="top" content="View on GitHub" />
-                                </a>
-                            )}
-
-                            {/* Website Icon */}
-                            {website && (
-                                <a
-                                    href={website}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    data-tooltip-id={`tooltip-website-${id}`}
-                                >
-                                    <FiExternalLink className="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 w-5 h-5" />
-                                    <Tooltip id={`tooltip-website-${id}`} place="top" content="Visit Website" />
-                                </a>
-                            )}
-                        </div>
                     </div>
-
-                    {/* Topics */}
-                    {topics.length > 0 && (
-                        <p className="text-sm text-ternary-dark dark:text-ternary-light mt-2">
-                            Topics: {topics.join(', ')}
-                        </p>
-                    )}
 
                     {/* Language & Date Created */}
                     <span className="text-sm text-ternary-dark dark:text-ternary-light mt-auto">
-                        {language || 'Unknown'} • {new Date(date_created).toDateString()}
+                        {language || 'Unknown'} 
                     </span>
                 </div>
             </Link>

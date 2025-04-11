@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import ProjectSingle from "./ProjectSingle";
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 6;
 
 function ProjectsGrid() {
   const [projects, setProjects] = useState([]);
@@ -23,20 +23,24 @@ function ProjectsGrid() {
   // Extract unique languages including "Unknown"
   const languages = [...new Set(projects.map((p) => p.language || "Unknown"))];
 
-
   // Filter projects based on search query & selected language
   const filteredProjects = projects.filter((project) => {
     const searchLower = searchProject.toLowerCase();
     const matchesSearch =
       project.project.toLowerCase().includes(searchLower) ||
-      (project.language && project.language.toLowerCase().includes(searchLower)) ||
-      (project.topics && project.topics.join(", ").toLowerCase().includes(searchLower)) ||
-      (project.website && project.website.toLowerCase().includes(searchLower)) ||
-      (project.repository_link && project.repository_link.toLowerCase().includes(searchLower));
+      (project.language &&
+        project.language.toLowerCase().includes(searchLower)) ||
+      (project.topics &&
+        project.topics.join(", ").toLowerCase().includes(searchLower)) ||
+      (project.website &&
+        project.website.toLowerCase().includes(searchLower)) ||
+      (project.repository_link &&
+        project.repository_link.toLowerCase().includes(searchLower));
 
-    const matchesLanguage = selectedLanguage === "Unknown"
-      ? !project.language
-      : selectedLanguage === "" || project.language === selectedLanguage;
+    const matchesLanguage =
+      selectedLanguage === "Unknown"
+        ? !project.language
+        : selectedLanguage === "" || project.language === selectedLanguage;
 
     return matchesSearch && matchesLanguage;
   });
@@ -50,8 +54,10 @@ function ProjectsGrid() {
   );
 
   // Handle pagination navigation
-  const goToNextPage = () => setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
-  const goToPreviousPage = () => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
+  const goToNextPage = () =>
+    setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
+  const goToPreviousPage = () =>
+    setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
   const goToPage = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -59,6 +65,12 @@ function ProjectsGrid() {
       <div className="text-center">
         <p className="font-general-medium text-2xl sm:text-4xl mb-1 text-ternary-dark dark:text-ternary-light">
           Projects Portfolio
+        </p>
+        <p className="text-md text-gray-500 dark:text-gray-300 max-w-2xl mx-auto mb-3">
+          Explore a diverse collection of my projects. Some live on GitHub
+          repositories, others are hosted online for quick interaction, and a
+          few are deployed privately with clients or within company
+          environments—each crafted with dedication and creativity.
         </p>
         <p className="text-sm text-gray-600 dark:text-gray-400">
           Total Projects: {filteredProjects.length}
@@ -99,7 +111,6 @@ function ProjectsGrid() {
         ))}
       </div>
 
-
       {/* Pagination Controls */}
       <div className="flex justify-center items-center mt-6">
         {/* Previous Button */}
@@ -107,7 +118,9 @@ function ProjectsGrid() {
           onClick={goToPreviousPage}
           disabled={currentPage === 1}
           className={`px-4 py-2 mx-1 rounded-md flex items-center ${
-            currentPage === 1 ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600 text-white"
+            currentPage === 1
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-indigo-500 hover:bg-indigo-600 text-white"
           }`}
         >
           <FiChevronLeft className="w-5 h-5" />
@@ -133,7 +146,9 @@ function ProjectsGrid() {
           onClick={goToNextPage}
           disabled={currentPage === totalPages}
           className={`px-4 py-2 mx-1 rounded-md flex items-center ${
-            currentPage === totalPages ? "bg-gray-400 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600 text-white"
+            currentPage === totalPages
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-indigo-500 hover:bg-indigo-600 text-white"
           }`}
         >
           <FiChevronRight className="w-5 h-5" />
