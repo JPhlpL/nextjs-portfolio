@@ -1,727 +1,839 @@
 [
-    {
-      "project": "Safety Driving Quiz Game App (Unity)",
-      "description": "An interactive Unity-based quiz app designed to improve driver awareness and understanding of road safety signs and precautions, particularly tailored for Filipino drivers.",
-      "language": "C#",
-      "date_created": "2019-07-09T02:05:03Z",
-      "stars": 4,
-      "website": "",
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "topics": [
-        "android",
-        "android-cell-phones",
-        "engineer-unity-game",
-        "precautions",
-        "safety-driving",
-        "signage",
-        "unity2d"
-      ],
-      "repository_link": "https://github.com/JPhlpL/Safety-Driving-Quiz-Game-App-Project-In-Software-Engineer-Unity-Game"
-    },
-    {
-      "project": "NextJS 14 FastAPI MySQL Boilerplate",
-      "description": "This boilerplate leverages NextJS v14 with App Router, FastAPI for backend endpoints, Drizzle ORM, and MySQL, ideal for rapid development of scalable web applications.",
-      "language": "TypeScript",
-      "date_created": "2024-09-28T09:14:48Z",
-      "stars": 3,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "",
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/nextjs14-app-router-fastapi-mysql-boilerplate"
-    },
-    {
-      "project": "Computer Laboratory Appliance Control with Raspberry Pi",
-      "description": "A Raspberry Pi-based system employing fuzzy logic to effectively monitor and control electrical appliances within computer laboratories, including usage analysis.",
-      "language": "PHP",
-      "date_created": "2019-07-09T01:00:19Z",
-      "stars": 2,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "",
-      "topics": [
-        "arduino-uno",
-        "html",
-        "jquery",
-        "php",
-        "python",
-        "raspberry-pi"
-      ],
-      "repository_link": "https://github.com/JPhlpL/ALQ-Computer-Laboratory-Monitoring-and-Controlling-Electrical-Appliances-using-Raspberry-Pi"
-    },
-    {
-      "project": "NextJS FastAPI Supabase App",
-      "description": "A robust web application template built with NextJS v14, FastAPI endpoints, Drizzle ORM, and Supabase integration for seamless database management.",
-      "language": "TypeScript",
-      "date_created": "2025-03-04T00:03:58Z",
-      "stars": 2,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "https://nextjs-fastapi-supa.vercel.app",
-      "topics": ["drizzle-orm", "fastapi", "nextjs", "python", "sqlalchemy"],
-      "repository_link": "https://github.com/JPhlpL/nextjs-fastapi-supa"
-    },
-    {
-      "project": "CyberSecurity Game: 4 Pics 1 Word",
-      "description": "An engaging puzzle game focused on cybersecurity, challenging players to deduce security-related concepts from visual hints.",
-      "language": "C#",
-      "date_created": "2023-10-30T09:37:54Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/CyberSecurity-Game-4pics1word"
-    },
-    {
-      "project": "JpH Custom Web Browser",
-      "description": "A personalized web browser developed using Visual Basic, offering a simple yet efficient browsing experience tailored to user preferences.",
-      "language": "Visual Basic",
-      "date_created": "2019-08-09T04:46:18Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/JpH-Browser"
-    },
-    {
-      "project": "Portfolio Website (HTML, CSS, JavaScript)",
-      "description": "Version 1 of my personal portfolio, showcasing skills and projects through clean, responsive design with HTML, CSS, and JavaScript.",
-      "language": "HTML",
-      "date_created": "2019-07-25T15:02:30Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "https://jphlpl.github.io/",
-      "topics": ["css", "html", "javascript"],
-      "repository_link": "https://github.com/JPhlpL/JPhlpL.github.io"
-    },
-    {
-      "project": "Laravel 10 AdminLTE Boilerplate",
-      "description": "A starter kit integrating Laravel 10 with the AdminLTE template, providing a ready-to-use admin dashboard interface.",
-      "language": "PHP",
-      "date_created": "2024-09-28T11:21:27Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Laravel10-adminlte-boilerplate"
-    },
-    {
-      "project": "Laravel 9 AdminLTE Integration",
-      "description": "A straightforward integration of Laravel 9 with the AdminLTE theme, offering a quick setup for admin dashboards and management systems.",
-      "language": "PHP",
-      "date_created": "2023-03-12T06:01:28Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Laravel9-AdminLTE"
-    },
-    {
-      "project": "NextJS Personal Portfolio",
-      "description": "The second iteration of my personal portfolio built with NextJS, showcasing modern web development practices and interactive features using Tailwind CSS.",
-      "language": "JavaScript",
-      "date_created": "2025-03-13T04:57:19Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "https://jphlpl-portfolio-next.vercel.app/",
-      "topics": ["nextjs", "nextjs14", "tailwindcss"],
-      "repository_link": "https://github.com/JPhlpL/nextjs-portfolio"
-    },
-    {
-      "project": "NextJS Spring Boot",
-      "description": "NextJS and Spring Boot Template (w/ Drizzle, Shadcn, and Gradlew)",
-      "language": "Java",
-      "date_created": "2025-03-03T10:33:08Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "",
-      "topics": [
-        "drizzle-orm",
-        "gradle",
-        "java",
-        "nextjs",
-        "spring-boot",
-        "supabase"
-      ],
-      "repository_link": "https://github.com/JPhlpL/nextjs-springboot"
-    },
-    {
-      "project": "Online Task Management System",
-      "description": "Built in Laravel 10 and PHP 8.1",
-      "language": "PHP",
-      "date_created": "2024-04-29T12:06:48Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Online-Task-Management-System"
-    },
-    {
-      "project": "Ryokoufy Travel Guide",
-      "description": "Travel Guide Application friendly that uses Laravel 10 and PHP 8.1",
-      "language": "PHP",
-      "date_created": "2024-05-08T06:58:59Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "https://jphiltech.com/portfolio-dev/ryokoufy/public/",
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Ryokoufy"
-    },
-    {
-      "project": "Stock Survey Application",
-      "description": "Desktop Application made on Java Swing GUI and SQLite for Database Management",
-      "language": "Java",
-      "date_created": "2024-05-09T01:44:11Z",
-      "stars": 1,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "",
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Stock-Survey-Application"
-    },
-    {
-      "project": "2nd Year Project Web Development",
-      "description": "A responsive website built as a foundational web development project focusing on HTML and CSS.",
-      "language": "HTML",
-      "date_created": "2019-07-09T01:11:04Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": ["css", "html"],
-      "repository_link": "https://github.com/JPhlpL/2nd-yr-Proj-Web-Dev"
-    },
-    {
-      "project": "2nd Year Web Programming Project",
-      "description": "Project for our Web Programming subject",
-      "language": "HTML",
-      "date_created": "2019-07-09T01:26:03Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "",
-      "topics": ["css", "html"],
-      "repository_link": "https://github.com/JPhlpL/2nd-yr-Proj-Web-Dev-2"
-    },
-    {
-      "project": "4 Pics 1 Word API",
-      "description": "An Extension for 4 Pics 1 Word executable API connecting to MySQL Database",
-      "language": "PHP",
-      "date_created": "2025-04-02T07:57:21Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/4pics-1word-api"
-    },
-    {
-      "project": "AWS IoT Core Thing Generator",
-      "description": "A Python script to automate certificate generation and device registration to AWS IoT Core via CLI",
-      "language": "Python",
-      "date_created": "2025-03-13T09:01:43Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/AWS-IoTCoreThing-Generator"
-    },
-    {
-      "project": "AWS S3 Auto Downloader",
-      "description": "Python script designed for automatic downloading of files from AWS S3 buckets",
-      "language": "Python",
-      "date_created": "2025-03-14T04:14:26Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/AWS-S3-Auto-Downloader"
-    },
-    {
-      "project": "CPlusPlus Handouts",
-      "description": "Collection of essential C++ code handouts for quick learning and reference.",
-      "language": "C++",
-      "date_created": "2025-03-13T01:28:57Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/CPlusplus-Handouts"
-    },
-    {
-      "project": "CPlusPlus College Projects",
-      "description": "Compilation of practical C++ projects developed during college courses.",
-      "language": "C++",
-      "date_created": "2024-05-09T12:15:45Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Cplusplus-Projects"
-    },
-    {
-      "project": "Email Attachment Auto Receive",
-      "description": "Python script automating email attachment downloads to streamline workflow.",
-      "language": "Python",
-      "date_created": "2024-04-19T10:01:53Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Email-Attachment-Auto-Receive"
-    },
-    {
-      "project": "Get All Contact List Email",
-      "description": "Efficient Python tool for retrieving and managing email contacts effortlessly.",
-      "language": "Python",
-      "date_created": "2024-04-19T10:06:06Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Get-All-Contact-List-Email"
-    },
-    {
-      "project": "GPT Chatbot",
-      "description": "Interactive chatbot application developed using PHP, JavaScript, and GPT-3.5, designed for user-friendly AI interactions.",
-      "language": "PHP",
-      "date_created": "2025-03-26T15:40:12Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/GPT-Chatbot"
-    },
-    {
-      "project": "ID Hexa Converter Using PyQT",
-      "description": "User-friendly PyQT-based application for converting IDs to hexadecimal format for seamless registrations.",
-      "language": "Python",
-      "date_created": "2025-03-13T10:20:34Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/ID-Hexa-Converter-using-PyQT"
-    },
-    {
-      "project": "Item Borrowing System",
-      "description": "A simple yet robust item borrowing system built with PHP, JavaScript (jQuery), MySQL, CSS, HTML, and AdminLTE for UI.",
-      "language": "PHP",
-      "date_created": "2025-03-26T15:36:41Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Item-Borrowing-System"
-    },
-    {
-      "project": "JPhlpL Chatbot",
-      "description": "Custom chatbot leveraging GPT technology for intelligent interactions and automation.",
-      "language": "Python",
-      "date_created": "2024-07-25T21:50:57Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/JPhlpL-Chatbot"
-    },
-    {
-      "project": "Library Management System",
-      "description": "Comprehensive Python-based system designed to manage library resources efficiently, tracking book inventory and lending processes.",
-      "language": "Python",
-      "date_created": "2024-04-19T10:30:39Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Library-Management-System"
-    },
-    {
-      "project": "M365 Check Forwarded Items",
-      "description": "Python utility for checking forwarded emails within Microsoft 365 environments.",
-      "language": "Python",
-      "date_created": "2025-04-08T09:12:22Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/m365-check-forwarded-items"
-    },
-    {
-      "project": "Macro IT Items Management System",
-      "description": "Excel VBA-based management system to effectively track and handle IT equipment inventory.",
-      "language": "Visual Basic",
-      "date_created": "2024-05-09T12:24:00Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "",
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Macro-IT-Items-Management-System"
-    },
-    {
-      "project": "My Codeigniter Sample",
-      "description": "A showcase Codeigniter project demonstrating essential features and capabilities.",
-      "language": "PHP",
-      "date_created": "2025-03-13T11:07:36Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/my-codeigniter-sample"
-    },
-    {
-      "project": "My Java Cheatsheet",
-      "description": "Concise cheatsheet for mastering Java OOP principles efficiently.",
-      "language": "Java",
-      "date_created": "2025-03-13T01:30:11Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/MyJavaCheatsheet"
-    },
-    {
-      "project": "Mypy GitHub Actions Trial",
-      "description": "Experimental repository demonstrating integration of Mypy with GitHub Actions for continuous type checking.",
-      "language": "Python",
-      "date_created": "2024-07-10T07:46:10Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/mypy-github-actions-trial"
-    },
-    {
-      "project": "MySQL FastAPI",
-      "description": "A Python FastAPI project showcasing basic CRUD operations integrated with a MySQL database.",
-      "language": "Python",
-      "date_created": "2024-05-13T06:17:53Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/mysqlfastapi"
-    },
-    {
-      "project": "NextJS Google Auth Supabase",
-      "description": "Next.JS with Google Authentication using Supabase",
-      "language": "TypeScript",
-      "date_created": "2024-05-23T07:19:22Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "https://jphlpl-socialauth.vercel.app",
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/NextJSGoogleAuthSupa"
-    },
-    {
-      "project": "NodeJS CRUD Application",
-      "description": "Project for NodeJS Crud Sample (Ongoing)",
-      "language": "JavaScript",
-      "date_created": "2025-03-13T10:32:27Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/nodejs-crud"
-    },
-    {
-      "project": "Online Voting System with RFID Attendance",
-      "description": "An online voting system enhanced with RFID authentication, built using Laravel 8 framework.",
-      "language": "PHP",
-      "date_created": "2025-03-13T09:04:48Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "",
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Online-Voting-System-with-RFID-Attendance"
-    },
-    {
-      "project": "PHP JavaScript Learning Guides",
-      "description": "Guides created during my initial learning stages of PHP and JavaScript.",
-      "language": "PHP",
-      "date_created": "2025-03-13T10:37:07Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/PHP-JavaScript-Guides"
-    },
-    {
-      "project": "Laravel Web Portfolio",
-      "description": "My web portfolio created using Laravel framework.",
-      "language": "PHP",
-      "date_created": "2024-09-02T14:32:05Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/profilaravel"
-    },
-    {
-      "project": "Django Application Samples",
-      "description": "Sample and testing implementations of Django applications.",
-      "language": "Python",
-      "date_created": "2024-05-09T01:04:59Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/pydjango"
-    },
-    {
-      "project": "FastAPI Python Samples",
-      "description": "Example code for Python using the FastAPI framework.",
-      "language": "Python",
-      "date_created": "2024-05-08T12:30:25Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/pyfastapi"
-    },
-    {
-      "project": "Python Testing Sandbox",
-      "description": "A sandbox repository for extensive Python script testing and trials.",
-      "language": "Python",
-      "date_created": "2024-07-31T20:41:37Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "",
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Pysandbox"
-    },
-    {
-      "project": "Python Desktop Event Trigger",
-      "description": "Python project that triggers actions based on desktop events, developed using Tkinter.",
-      "language": "Python",
-      "date_created": "2025-03-13T09:10:02Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Python-Client-Hook-using-Tkinter"
-    },
-    {
-      "project": "WiFi Scanner using Python",
-      "description": "Python script designed to scan and list all available Wi-Fi networks within range.",
-      "language": "Python",
-      "date_created": "2025-03-13T11:04:16Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Python-Get-Wifi"
-    },
-    {
-      "project": "Selenium Testing with Python",
-      "description": "Automated browser testing using Python with Selenium framework.",
-      "language": "Python",
-      "date_created": "2025-03-13T11:00:58Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Python-Selenium-Sample-Testing"
-    },
-    {
-      "project": "Professional Python Scripts",
-      "description": "Various Python scripts developed and utilized during previous professional roles.",
-      "language": "Python",
-      "date_created": "2025-03-13T01:32:44Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/PythonTrial"
-    },
-    {
-      "project": "React Learning Samples",
-      "description": "Collection of React samples developed during my learning journey.",
-      "language": "TypeScript",
-      "date_created": "2024-05-26T12:00:33Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/react-sample"
-    },
-    {
-      "project": "Sample CSharp CRUD Application",
-      "description": "Trial C# Crud",
-      "language": "C#",
-      "date_created": "2025-03-13T01:26:47Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Sample-CSharp-Crud"
-    },
-    {
-      "project": "Shortest Job First Scheduling Algorithm in C",
-      "description": "Implementation of the Shortest Job First (SJF) scheduling algorithm in C++ to efficiently manage process execution order.",
-      "language": "C++",
-      "date_created": "2019-07-09T01:38:05Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": ["c"],
-      "repository_link": "https://github.com/JPhlpL/Shortest-Job-First-Scheduling-Algorithm-in-C"
-    },
-    {
-      "project": "Simple Inventory CRUD App",
-      "description": "Made by Maven Java and SQLite for Database. Structured on model-db-ui directory and it is simple inventory CRUD app developed for maintaining simple items and deployed to other departments.",
-      "language": "Java",
-      "date_created": "2025-04-02T12:32:15Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": "",
-      "topics": ["inventory", "java", "maven", "sqlite"],
-      "repository_link": "https://github.com/JPhlpL/Simple-Inventory-CRUD-App"
-    },
-    {
-      "project": "SQL Database Backup with Python",
-      "description": "A Python-based solution to automate and simplify SQL database backups, ensuring data safety and ease of recovery.",
-      "language": "Python",
-      "date_created": "2024-04-19T10:19:19Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/SQL-Database-Backup-using-Python"
-    },
-    {
-      "project": "Storage Checker Utility",
-      "description": "A Python script designed to efficiently check and report on storage utilization, ensuring optimal system performance and resource allocation.",
-      "language": "Python",
-      "date_created": "2025-03-13T10:27:35Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Storage-Checker"
-    },
-    {
-      "project": "Supabase Management with FastAPI",
-      "description": "FastAPI with Supabase Management ",
-      "language": "Python",
-      "date_created": "2024-05-10T13:36:04Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/supafastapi"
-    },
-    {
-      "project": "Wishlist Management System",
-      "description": "A user-friendly application built with QML to efficiently create, track, and manage wishlists, enhancing organization and planning.",
-      "language": "QML",
-      "date_created": "2024-04-19T10:38:20Z",
-      "stars": 0,
-      "images": [
-        "/images/projects/default1.png"
-      ],
-      "website": null,
-      "topics": [],
-      "repository_link": "https://github.com/JPhlpL/Wishlist-System"
-    }
-  ]
-  
+  {
+    "project": "Taja AI",
+    "description": "Taja AI streamlines your social media strategy by converting your YouTube videos into multiple engaging posts. This process saves you time and enhances your online presence effortlessly.",
+    "language": "Python",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": "https://www.taja.ai/",
+    "topics": [
+      "FastAPI",
+      "Nextjs",
+      "Artificial Intelligence",
+      "Supabase PostgreSQL",
+      "Modal Container",
+      "AWS S3",
+      "Vector"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "Environmental Performance DB System",
+    "description": "Maintains the record of all environment consumption such as electricity, water, waste, etc. It also gives a data visualization on each category in order to get a short review of its data. It has also scheduler that must be submitted by the registrant depends on the detailed occurrence schedule. ",
+    "language": "PHP",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [
+      "PHP",
+      "JavaScript",
+      "Ajax",
+      "JQuery",
+      "CSS3",
+      "HTML5",
+      "MYSQL",
+      "JSON",
+      "PHPMailer",
+      "cURL",
+      "Web Hosting"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "Email Phishing Awareness Training System",
+    "description": "Conducting a Cybersecurity Awareness by generating a Fake Email Phishing to our workers provided inside the system. It also has a scheduler that can be useful for scheduling of email sending. It can also modifies the email content and creating email content for sending email phishing links inside the system and if the users clicks or responses, it will fetch their computer host name, ip address, and email address, and it will notify the admin in a realtime.",
+    "language": "PHP",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [
+      "PHP",
+      "JavaScript",
+      "Ajax",
+      "JQuery",
+      "MYSQL",
+      "PHPMailer",
+      "Cybersecurity",
+      "Phishing",
+      "Email Training"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "DENSO Smart Agri-Tech Internet-of-Things: Autodoser 1",
+    "description": "A special project promoting a smart agriculture technology hardware product embedded with a software focuses on sensing the Water Temperature, PH Level, and Electric Conductivity (EC) inside a water tank connecting to the irrigation. It also provides a nutritient auto pump using actuators and relay in order to give the correctness of nutrients absorbed by the plants.",
+    "language": "Python",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [
+      "Internet-of-Things",
+      "Smart Greenhouse",
+      "AWS Lambda",
+      "AWS IoTCore",
+      "AWS Kinesis",
+      "AWS Amplify",
+      "AWS Cognito",
+      "AWS S3",
+      "AWS RDS",
+      "AWS SNS",
+      "Python",
+      "Arduino",
+      "C++",
+      "Electrical Conductivity",
+      "pH Level",
+      "Water Temperature",
+      "Smart Agriculture"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "Smart AgriFarm Inventory and Customer Ordering System",
+    "description": "It is like Point-of-Sale System that focuses on maintaining the inventory of raw materials and foreign goods using stock in and stock out methodology. It also displays when the foreign material or raw materials will be expired to control its quantity. Customer order can be inputted also inside the system monitoring by the staff and providing the given materials based on the bill of materials by the material planner.",
+    "language": "PHP",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [
+      "Point of Sale",
+      "Inventory",
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "CSS",
+      "HTML",
+      "Ajax",
+      "jQuery"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "Employee Attendance System using RFID Reader",
+    "description": "monitoring the attendance of the employees by tapping their ID to the RFID Reader. It has also a person in charge login function for maintaining security on each charge.",
+    "language": "PHP",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [
+      "RFID",
+      "Attendance",
+      "HR",
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "CSS",
+      "HTML",
+      "Ajax",
+      "jQuery"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "HR Online Internal Hiring System",
+    "description": "Provides an all-out hiring process in a web application. The user role is consists of admin, applicant, approver which is team leader and up, and hr.",
+    "language": "PHP",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [
+      "PHPMailer",
+      "Attendance",
+      "HR",
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "CSS",
+      "HTML",
+      "Ajax",
+      "jQuery"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "Year-End Party Attendance and Monitoring System using QR",
+    "description": "Monitoring the attendance by scanning their qr codes and it has Realtime feature displaying dashboard on each departments.",
+    "language": "PHP",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [
+      "QR",
+      "Attendance",
+      "HR",
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "CSS",
+      "HTML",
+      "Ajax",
+      "jQuery"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "Burr Sheet Monitoring System",
+    "description": "Collecting informations and monitoring the burr count for each part item given by the supplier. ",
+    "language": "PHP",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "CSS",
+      "HTML",
+      "Ajax",
+      "jQuery",
+      "Production",
+      "Supplier"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "Abnormal Warranty Claim Detection System",
+    "description": "Detection of abnormal transaction claims. It uses MySQL queries to update some values and Front end for providing a display color for the abnormality detection.",
+    "language": "PHP",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [
+      "PHP",
+      "Javascript",
+      "MySQL",
+      "Ajax",
+      "jQuery",
+      "CSS",
+      "HTML",
+      "Aftermarket",
+      "Warranty Claim"
+    ],
+    "repository_link": null
+  },
+  {
+    "project": "Safety Driving Quiz Game App (Unity)",
+    "description": "An interactive Unity-based quiz app designed to improve driver awareness and understanding of road safety signs and precautions, particularly tailored for Filipino drivers.",
+    "language": "C#",
+    "date_created": "2019-07-09T02:05:03Z",
+    "stars": 4,
+    "website": "",
+    "images": ["/images/projects/default1.png"],
+    "topics": [
+      "android",
+      "android-cell-phones",
+      "engineer-unity-game",
+      "precautions",
+      "safety-driving",
+      "signage",
+      "unity2d"
+    ],
+    "repository_link": "https://github.com/JPhlpL/Safety-Driving-Quiz-Game-App-Project-In-Software-Engineer-Unity-Game"
+  },
+  {
+    "project": "NextJS 14 FastAPI MySQL Boilerplate",
+    "description": "This boilerplate leverages NextJS v14 with App Router, FastAPI for backend endpoints, Drizzle ORM, and MySQL, ideal for rapid development of scalable web applications.",
+    "language": "TypeScript",
+    "date_created": "2024-09-28T09:14:48Z",
+    "stars": 3,
+    "images": ["/images/projects/default1.png"],
+    "website": "",
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/nextjs14-app-router-fastapi-mysql-boilerplate"
+  },
+  {
+    "project": "Computer Laboratory Appliance Control with Raspberry Pi",
+    "description": "A Raspberry Pi-based system employing fuzzy logic to effectively monitor and control electrical appliances within computer laboratories, including usage analysis.",
+    "language": "PHP",
+    "date_created": "2019-07-09T01:00:19Z",
+    "stars": 2,
+    "images": ["/images/projects/default1.png"],
+    "website": "",
+    "topics": [
+      "arduino-uno",
+      "html",
+      "jquery",
+      "php",
+      "python",
+      "raspberry-pi"
+    ],
+    "repository_link": "https://github.com/JPhlpL/ALQ-Computer-Laboratory-Monitoring-and-Controlling-Electrical-Appliances-using-Raspberry-Pi"
+  },
+  {
+    "project": "NextJS FastAPI Supabase App",
+    "description": "A robust web application template built with NextJS v14, FastAPI endpoints, Drizzle ORM, and Supabase integration for seamless database management.",
+    "language": "TypeScript",
+    "date_created": "2025-03-04T00:03:58Z",
+    "stars": 2,
+    "images": ["/images/projects/default1.png"],
+    "website": "https://nextjs-fastapi-supa.vercel.app",
+    "topics": ["drizzle-orm", "fastapi", "nextjs", "python", "sqlalchemy"],
+    "repository_link": "https://github.com/JPhlpL/nextjs-fastapi-supa"
+  },
+  {
+    "project": "CyberSecurity Game: 4 Pics 1 Word",
+    "description": "An engaging puzzle game focused on cybersecurity, challenging players to deduce security-related concepts from visual hints.",
+    "language": "C#",
+    "date_created": "2023-10-30T09:37:54Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/CyberSecurity-Game-4pics1word"
+  },
+  {
+    "project": "JpH Custom Web Browser",
+    "description": "A personalized web browser developed using Visual Basic, offering a simple yet efficient browsing experience tailored to user preferences.",
+    "language": "Visual Basic",
+    "date_created": "2019-08-09T04:46:18Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/JpH-Browser"
+  },
+  {
+    "project": "Portfolio Website (HTML, CSS, JavaScript)",
+    "description": "Version 1 of my personal portfolio, showcasing skills and projects through clean, responsive design with HTML, CSS, and JavaScript.",
+    "language": "HTML",
+    "date_created": "2019-07-25T15:02:30Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": "https://jphlpl.github.io/",
+    "topics": ["css", "html", "javascript"],
+    "repository_link": "https://github.com/JPhlpL/JPhlpL.github.io"
+  },
+  {
+    "project": "Laravel 10 AdminLTE Boilerplate",
+    "description": "A starter kit integrating Laravel 10 with the AdminLTE template, providing a ready-to-use admin dashboard interface.",
+    "language": "PHP",
+    "date_created": "2024-09-28T11:21:27Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Laravel10-adminlte-boilerplate"
+  },
+  {
+    "project": "Laravel 9 AdminLTE Integration",
+    "description": "A straightforward integration of Laravel 9 with the AdminLTE theme, offering a quick setup for admin dashboards and management systems.",
+    "language": "PHP",
+    "date_created": "2023-03-12T06:01:28Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Laravel9-AdminLTE"
+  },
+  {
+    "project": "NextJS Personal Portfolio",
+    "description": "The second iteration of my personal portfolio built with NextJS, showcasing modern web development practices and interactive features using Tailwind CSS.",
+    "language": "JavaScript",
+    "date_created": "2025-03-13T04:57:19Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": "https://jphlpl-portfolio-next.vercel.app/",
+    "topics": ["nextjs", "nextjs14", "tailwindcss"],
+    "repository_link": "https://github.com/JPhlpL/nextjs-portfolio"
+  },
+  {
+    "project": "NextJS Spring Boot",
+    "description": "NextJS and Spring Boot Template (w/ Drizzle, Shadcn, and Gradlew)",
+    "language": "Java",
+    "date_created": "2025-03-03T10:33:08Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": "",
+    "topics": [
+      "drizzle-orm",
+      "gradle",
+      "java",
+      "nextjs",
+      "spring-boot",
+      "supabase"
+    ],
+    "repository_link": "https://github.com/JPhlpL/nextjs-springboot"
+  },
+  {
+    "project": "Online Task Management System",
+    "description": "Built in Laravel 10 and PHP 8.1",
+    "language": "PHP",
+    "date_created": "2024-04-29T12:06:48Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Online-Task-Management-System"
+  },
+  {
+    "project": "Ryokoufy Travel Guide",
+    "description": "Travel Guide Application friendly that uses Laravel 10 and PHP 8.1",
+    "language": "PHP",
+    "date_created": "2024-05-08T06:58:59Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": "https://jphiltech.com/portfolio-dev/ryokoufy/public/",
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Ryokoufy"
+  },
+  {
+    "project": "Stock Survey Application",
+    "description": "Desktop Application made on Java Swing GUI and SQLite for Database Management",
+    "language": "Java",
+    "date_created": "2024-05-09T01:44:11Z",
+    "stars": 1,
+    "images": ["/images/projects/default1.png"],
+    "website": "",
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Stock-Survey-Application"
+  },
+  {
+    "project": "2nd Year Project Web Development",
+    "description": "A responsive website built as a foundational web development project focusing on HTML and CSS.",
+    "language": "HTML",
+    "date_created": "2019-07-09T01:11:04Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": ["css", "html"],
+    "repository_link": "https://github.com/JPhlpL/2nd-yr-Proj-Web-Dev"
+  },
+  {
+    "project": "2nd Year Web Programming Project",
+    "description": "Project for our Web Programming subject",
+    "language": "HTML",
+    "date_created": "2019-07-09T01:26:03Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": "",
+    "topics": ["css", "html"],
+    "repository_link": "https://github.com/JPhlpL/2nd-yr-Proj-Web-Dev-2"
+  },
+  {
+    "project": "4 Pics 1 Word API",
+    "description": "An Extension for 4 Pics 1 Word executable API connecting to MySQL Database",
+    "language": "PHP",
+    "date_created": "2025-04-02T07:57:21Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/4pics-1word-api"
+  },
+  {
+    "project": "AWS IoT Core Thing Generator",
+    "description": "A Python script to automate certificate generation and device registration to AWS IoT Core via CLI",
+    "language": "Python",
+    "date_created": "2025-03-13T09:01:43Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/AWS-IoTCoreThing-Generator"
+  },
+  {
+    "project": "AWS S3 Auto Downloader",
+    "description": "Python script designed for automatic downloading of files from AWS S3 buckets",
+    "language": "Python",
+    "date_created": "2025-03-14T04:14:26Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/AWS-S3-Auto-Downloader"
+  },
+  {
+    "project": "CPlusPlus Handouts",
+    "description": "Collection of essential C++ code handouts for quick learning and reference.",
+    "language": "C++",
+    "date_created": "2025-03-13T01:28:57Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/CPlusplus-Handouts"
+  },
+  {
+    "project": "CPlusPlus College Projects",
+    "description": "Compilation of practical C++ projects developed during college courses.",
+    "language": "C++",
+    "date_created": "2024-05-09T12:15:45Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Cplusplus-Projects"
+  },
+  {
+    "project": "Email Attachment Auto Receive",
+    "description": "Python script automating email attachment downloads to streamline workflow.",
+    "language": "Python",
+    "date_created": "2024-04-19T10:01:53Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Email-Attachment-Auto-Receive"
+  },
+  {
+    "project": "Get All Contact List Email",
+    "description": "Efficient Python tool for retrieving and managing email contacts effortlessly.",
+    "language": "Python",
+    "date_created": "2024-04-19T10:06:06Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Get-All-Contact-List-Email"
+  },
+  {
+    "project": "GPT Chatbot",
+    "description": "Interactive chatbot application developed using PHP, JavaScript, and GPT-3.5, designed for user-friendly AI interactions.",
+    "language": "PHP",
+    "date_created": "2025-03-26T15:40:12Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/GPT-Chatbot"
+  },
+  {
+    "project": "ID Hexa Converter Using PyQT",
+    "description": "User-friendly PyQT-based application for converting IDs to hexadecimal format for seamless registrations.",
+    "language": "Python",
+    "date_created": "2025-03-13T10:20:34Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/ID-Hexa-Converter-using-PyQT"
+  },
+  {
+    "project": "IT Inventory and Reservation Item System",
+    "description": "Maintaining IT related items inside the inventory using their unique tag number and qr code integration. It also uses for reservation on each item by the user internally and externally and must be approved by their approver inside the system.",
+    "language": "PHP",
+    "date_created": "2025-03-26T15:36:41Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Item-Borrowing-System"
+  },
+  {
+    "project": "JPhlpL Chatbot",
+    "description": "Custom chatbot leveraging GPT technology for intelligent interactions and automation.",
+    "language": "Python",
+    "date_created": "2024-07-25T21:50:57Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/JPhlpL-Chatbot"
+  },
+  {
+    "project": "Library Management System",
+    "description": "Comprehensive Python-based system designed to manage library resources efficiently, tracking book inventory and lending processes.",
+    "language": "Python",
+    "date_created": "2024-04-19T10:30:39Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Library-Management-System"
+  },
+  {
+    "project": "M365 Check Forwarded Items",
+    "description": "Python utility for checking forwarded emails within Microsoft 365 environments.",
+    "language": "Python",
+    "date_created": "2025-04-08T09:12:22Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/m365-check-forwarded-items"
+  },
+  {
+    "project": "Macro IT Items Management System",
+    "description": "Excel VBA-based management system to effectively track and handle IT equipment inventory.",
+    "language": "Visual Basic",
+    "date_created": "2024-05-09T12:24:00Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": "",
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Macro-IT-Items-Management-System"
+  },
+  {
+    "project": "My Codeigniter Sample",
+    "description": "A showcase Codeigniter project demonstrating essential features and capabilities.",
+    "language": "PHP",
+    "date_created": "2025-03-13T11:07:36Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/my-codeigniter-sample"
+  },
+  {
+    "project": "My Java Cheatsheet",
+    "description": "Concise cheatsheet for mastering Java OOP principles efficiently.",
+    "language": "Java",
+    "date_created": "2025-03-13T01:30:11Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/MyJavaCheatsheet"
+  },
+  {
+    "project": "Mypy GitHub Actions Trial",
+    "description": "Experimental repository demonstrating integration of Mypy with GitHub Actions for continuous type checking.",
+    "language": "Python",
+    "date_created": "2024-07-10T07:46:10Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/mypy-github-actions-trial"
+  },
+  {
+    "project": "MySQL FastAPI",
+    "description": "A Python FastAPI project showcasing basic CRUD operations integrated with a MySQL database.",
+    "language": "Python",
+    "date_created": "2024-05-13T06:17:53Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/mysqlfastapi"
+  },
+  {
+    "project": "NextJS Google Auth Supabase",
+    "description": "Next.JS with Google Authentication using Supabase",
+    "language": "TypeScript",
+    "date_created": "2024-05-23T07:19:22Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": "https://jphlpl-socialauth.vercel.app",
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/NextJSGoogleAuthSupa"
+  },
+  {
+    "project": "NodeJS CRUD Application",
+    "description": "Project for NodeJS Crud Sample (Ongoing)",
+    "language": "JavaScript",
+    "date_created": "2025-03-13T10:32:27Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/nodejs-crud"
+  },
+  {
+    "project": "Online Voting System with RFID Attendance",
+    "description": "An online voting system enhanced with RFID authentication, built using Laravel 8 framework.",
+    "language": "PHP",
+    "date_created": "2025-03-13T09:04:48Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": "",
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Online-Voting-System-with-RFID-Attendance"
+  },
+  {
+    "project": "PHP JavaScript Learning Guides",
+    "description": "Guides created during my initial learning stages of PHP and JavaScript.",
+    "language": "PHP",
+    "date_created": "2025-03-13T10:37:07Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/PHP-JavaScript-Guides"
+  },
+  {
+    "project": "Laravel Web Portfolio",
+    "description": "My web portfolio created using Laravel framework.",
+    "language": "PHP",
+    "date_created": "2024-09-02T14:32:05Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/profilaravel"
+  },
+  {
+    "project": "Django Application Samples",
+    "description": "Sample and testing implementations of Django applications.",
+    "language": "Python",
+    "date_created": "2024-05-09T01:04:59Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/pydjango"
+  },
+  {
+    "project": "FastAPI Python Samples",
+    "description": "Example code for Python using the FastAPI framework.",
+    "language": "Python",
+    "date_created": "2024-05-08T12:30:25Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/pyfastapi"
+  },
+  {
+    "project": "Python Testing Sandbox",
+    "description": "A sandbox repository for extensive Python script testing and trials.",
+    "language": "Python",
+    "date_created": "2024-07-31T20:41:37Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": "",
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Pysandbox"
+  },
+  {
+    "project": "Python Desktop Event Trigger",
+    "description": "Python project that triggers actions based on desktop events, developed using Tkinter.",
+    "language": "Python",
+    "date_created": "2025-03-13T09:10:02Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Python-Client-Hook-using-Tkinter"
+  },
+  {
+    "project": "WiFi Scanner using Python",
+    "description": "Python script designed to scan and list all available Wi-Fi networks within range.",
+    "language": "Python",
+    "date_created": "2025-03-13T11:04:16Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Python-Get-Wifi"
+  },
+  {
+    "project": "Selenium Testing with Python",
+    "description": "Automated browser testing using Python with Selenium framework.",
+    "language": "Python",
+    "date_created": "2025-03-13T11:00:58Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Python-Selenium-Sample-Testing"
+  },
+  {
+    "project": "Professional Python Scripts",
+    "description": "Various Python scripts developed and utilized during previous professional roles.",
+    "language": "Python",
+    "date_created": "2025-03-13T01:32:44Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/PythonTrial"
+  },
+  {
+    "project": "React Learning Samples",
+    "description": "Collection of React samples developed during my learning journey.",
+    "language": "TypeScript",
+    "date_created": "2024-05-26T12:00:33Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/react-sample"
+  },
+  {
+    "project": "Sample CSharp CRUD Application",
+    "description": "Trial C# Crud",
+    "language": "C#",
+    "date_created": "2025-03-13T01:26:47Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Sample-CSharp-Crud"
+  },
+  {
+    "project": "Shortest Job First Scheduling Algorithm in C",
+    "description": "Implementation of the Shortest Job First (SJF) scheduling algorithm in C++ to efficiently manage process execution order.",
+    "language": "C++",
+    "date_created": "2019-07-09T01:38:05Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": ["c"],
+    "repository_link": "https://github.com/JPhlpL/Shortest-Job-First-Scheduling-Algorithm-in-C"
+  },
+  {
+    "project": "Simple Inventory CRUD App",
+    "description": "Made by Maven Java and SQLite for Database. Structured on model-db-ui directory and it is simple inventory CRUD app developed for maintaining simple items and deployed to other departments.",
+    "language": "Java",
+    "date_created": "2025-04-02T12:32:15Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": "",
+    "topics": ["inventory", "java", "maven", "sqlite"],
+    "repository_link": "https://github.com/JPhlpL/Simple-Inventory-CRUD-App"
+  },
+  {
+    "project": "Automatic Scheduling Database Backup using Python",
+    "description": "Provides an automatic backup of database in one of the requirements of disaster recovery plan using python. It also notifies the admin if the backup is successfully completed. For the security, it is encrypted with a secret key that only admin can be decrypt and uses SHA256.",
+    "language": "Python",
+    "date_created": "2024-04-19T10:19:19Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/SQL-Database-Backup-using-Python"
+  },
+  {
+    "project": "Storage Checker Utility",
+    "description": "A Python script designed to efficiently check and report on storage utilization, ensuring optimal system performance and resource allocation.",
+    "language": "Python",
+    "date_created": "2025-03-13T10:27:35Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Storage-Checker"
+  },
+  {
+    "project": "Supabase Management with FastAPI",
+    "description": "FastAPI with Supabase Management ",
+    "language": "Python",
+    "date_created": "2024-05-10T13:36:04Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/supafastapi"
+  },
+  {
+    "project": "Wishlist Management System",
+    "description": "A user-friendly application built with QML to efficiently create, track, and manage wishlists, enhancing organization and planning.",
+    "language": "QML",
+    "date_created": "2024-04-19T10:38:20Z",
+    "stars": 0,
+    "images": ["/images/projects/default1.png"],
+    "website": null,
+    "topics": [],
+    "repository_link": "https://github.com/JPhlpL/Wishlist-System"
+  }
+]
