@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import ProjectSingle from "./ProjectSingle";
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 9;
 
 function ProjectsGrid() {
   const [projects, setProjects] = useState([]);
