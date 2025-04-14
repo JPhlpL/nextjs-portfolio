@@ -1,4 +1,5 @@
 module.exports = {
+  basePath: '/portfolio',
   eslint: {
     ignoreDuringBuilds: true,
   }, // For Now
