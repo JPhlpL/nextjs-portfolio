@@ -1,11 +1,16 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { FiArrowDownCircle } from "react-icons/fi"
-import useThemeSwitcher from "../../hooks/useThemeSwitcher"
+import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { FiArrowDownCircle } from "react-icons/fi";
+import useThemeSwitcher from "../../hooks/useThemeSwitcher";
 
+// import Typewriter *only* on the client
+const Typewriter = dynamic(() => import("typewriter-effect"), {
+  ssr: false,
+});
 function AppBanner() {
-  const [activeTheme] = useThemeSwitcher()
+  const [activeTheme] = useThemeSwitcher();
 
   return (
     <motion.section
@@ -25,7 +30,7 @@ function AppBanner() {
           }}
           className="font-general-semibold text-4xl lg:text-5xl xl:text-6xl text-left text-ternary-dark dark:text-primary-light uppercase"
         >
-          Hi, I am Philip!
+          John Philip Lominoque
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -37,7 +42,22 @@ function AppBanner() {
           }}
           className="font-general-medium mt-6 text-xl md:text-2xl lg:text-3xl text-left leading-normal text-gray-500 dark:text-gray-200"
         >
-          IT Consultant | Fullstack Developer | Software Engineer
+        <Typewriter
+        className="font-general-medium mt-6 text-xl md:text-2xl lg:text-3xl text-left leading-normal text-gray-500 dark:text-gray-200"
+          onInit={(typewriter) => {
+            typewriter
+              .typeString("IT Consultant")
+              .pauseFor(2500)
+              .deleteAll()
+              .typeString("Fullstack Developer")
+              .pauseFor(2500)
+              .deleteAll()
+              .typeString("Software Engineer")
+              .pauseFor(2500)
+              .deleteAll()
+              .start();
+          }}
+        />
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
@@ -61,8 +81,7 @@ function AppBanner() {
         </motion.div>
       </div>
     </motion.section>
-  )
+  );
 }
 
-export default AppBanner
-
+export default AppBanner;
