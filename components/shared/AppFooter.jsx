@@ -8,16 +8,21 @@ const socialLinks = [
   },
   {
     id: 2,
+    icon: <FiGlobe />,
+    url: "https://jphlpl.github.io/",
+  },
+  {
+    id: 3,
     icon: <FiGithub />,
     url: "https://github.com/JPhlpL",
   },
   {
-    id: 3,
+    id: 4,
     icon: <FiLinkedin />,
     url: "https://www.linkedin.com/in/jplominoque/",
   },
   {
-    id: 4,
+    id: 5,
     icon: <FiFacebook />,
     url: "https://www.facebook.com/Lipip.JP/",
   },
