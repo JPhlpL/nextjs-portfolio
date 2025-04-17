@@ -13,6 +13,10 @@ import PythonImage from '../public/images/stacks/python.png';
 import SupabaseImage from '../public/images/stacks/supabase.png';
 import VercelImage from '../public/images/stacks/vercel.png';
 import TypescriptImage from '../public/images/stacks/typescript.png';
+import DockerImage from '../public/images/stacks/docker.png';
+import NginxImage from '../public/images/stacks/nginx.png';
+import GithubImage from '../public/images/stacks/github.png';
+import AzureImage from '../public/images/stacks/azure.png';
 
 export const stackHeading = 'Current Stack';
 
@@ -24,28 +28,8 @@ export const stackData = [
 	},
 	{
 		id: uuidv4(),
-		title: 'AWS',
-		img: AWSImage,
-	},
-	{
-		id: uuidv4(),
-		title: 'Java',
-		img: JavaImage,
-	},
-	{
-		id: uuidv4(),
 		title: 'Laravel',
 		img: LaravelImage,
-	},
-	{
-		id: uuidv4(),
-		title: 'Modal',
-		img: ModalImage,
-	},
-	{
-		id: uuidv4(),
-		title: 'MySQL',
-		img: MySQLImage,
 	},
 	{
 		id: uuidv4(),
@@ -54,8 +38,8 @@ export const stackData = [
 	},
 	{
 		id: uuidv4(),
-		title: 'PostgreSQL',
-		img: PostgreSQLImage,
+		title: 'Java',
+		img: JavaImage,
 	},
 	{
 		id: uuidv4(),
@@ -64,8 +48,38 @@ export const stackData = [
 	},
 	{
 		id: uuidv4(),
+		title: 'Typescript',
+		img: TypescriptImage,
+	},
+	{
+		id: uuidv4(),
+		title: 'MySQL',
+		img: MySQLImage,
+	},
+	{
+		id: uuidv4(),
+		title: 'PostgreSQL',
+		img: PostgreSQLImage,
+	},
+	{
+		id: uuidv4(),
 		title: 'Supabase',
 		img: SupabaseImage,
+	},
+	{
+		id: uuidv4(),
+		title: 'AWS',
+		img: AWSImage,
+	},
+	{
+		id: uuidv4(),
+		title: 'Azure',
+		img: AzureImage,
+	},
+	{
+		id: uuidv4(),
+		title: 'Modal',
+		img: ModalImage,
 	},
 	{
 		id: uuidv4(),
@@ -74,7 +88,17 @@ export const stackData = [
 	},
 	{
 		id: uuidv4(),
-		title: 'Typescript',
-		img: TypescriptImage,
+		title: 'Docker',
+		img: DockerImage,
+	},
+	{
+		id: uuidv4(),
+		title: 'Github',
+		img: GithubImage,
+	},
+	{
+		id: uuidv4(),
+		title: 'Nginx',
+		img: NginxImage,
 	},
 ];
