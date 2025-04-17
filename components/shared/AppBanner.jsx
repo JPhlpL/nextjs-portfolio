@@ -54,7 +54,6 @@ function AppBanner() {
               .deleteAll()
               .typeString("Software Engineer")
               .pauseFor(2500)
-              .deleteAll()
               .start();
           }}
         />
