@@ -20,8 +20,9 @@ nextjs-portfolio/
 ├── hooks/                        # Top-level reusable React hooks
 ├── lib/
 │   └── supabase/                 # Supabase client utilities
-│       ├── client.ts             # Read-only client for app
-│       └── server.ts             # Admin client for seeding scripts
+│       ├── client.ts             # Read-only typed client for app
+│       ├── server.ts             # Admin typed client for seeding scripts
+│       └── database.types.ts     # Auto-generated TypeScript types (from schema)
 ├── next.config.js                # Next.js config (reactStrictMode: true)
 ├── nextjs-portfolio.code-workspace
 ├── package.json                  # Dependencies + npm scripts

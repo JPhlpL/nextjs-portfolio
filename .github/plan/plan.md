@@ -115,20 +115,23 @@ A consolidated backlog combining the existing `todo.md`, in-code `TODO`s, and ob
 - **Hybrid sorting:** Manual pins first (order_index 1, 2, 3...), then auto-sort by stars/date
 
 **Quick summary:**
-1. Install `@supabase/supabase-js`, create client utilities
+1. Install `@supabase/supabase-js` + Supabase CLI, create typed client utilities
 2. Design `projects` table schema with `is_visible` + `order_index` columns
-3. Seed data from `scripts/github.json` 
-4. Replace `/api/github` with `/api/projects` (Supabase read-only client)
-5. Test, benchmark, update docs, cleanup old JSON
+3. **Generate TypeScript types** from database schema (`npm run db:types`)
+4. Seed data from `scripts/github.json`
+5. Replace `/api/github` with `/api/projects` (typed Supabase read-only client)
+6. Test, benchmark, update docs, cleanup old JSON
 
 **Benefits:**
 - Dynamic data updates without redeploying
+- **Full TypeScript type safety** for all database operations
 - Curate featured projects with `order_index`
 - Hide drafts with `is_visible = false`
 - Scalable pattern for certificates, accomplishments, etc.
 - Queryable with filters, pagination, full-text search
+- Auto-complete for table/column names in IDE
 
-**Timeline:** ~4 hours estimated
+**Timeline:** ~4.5 hours estimated
 
 **Future tables:** The `is_visible` + `order_index` pattern will be applied to certificates and accomplishments tables when those are migrated.
 

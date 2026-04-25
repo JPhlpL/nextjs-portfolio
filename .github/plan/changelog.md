@@ -53,7 +53,16 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - `supabase/migrations/001_create_projects_table.sql` — complete table schema with RLS and triggers
   - `supabase/seeds/projects_seed_template.sql` — reusable SQL template with examples
 
-**Latest updates (2026-04-25 00:23):**
+**Latest updates (2026-04-25 00:33):**
+- **TypeScript type generation:** Added Phase 2.5 for generating database types using Supabase CLI
+  - Install Supabase CLI: `npm install -D supabase`
+  - Generate types: `npx supabase gen types typescript --linked > lib/supabase/database.types.ts`
+  - Updated client utilities to use typed `createClient<Database>`
+  - Export convenience types: `export type Project = Tables<'projects'>`
+  - All API endpoints and components now use typed Supabase clients
+  - Added `npm run db:types` script to regenerate types after schema changes
+  - Types are committed to version control for team access
+  - TypeScript validates all column names, types, and query results
 - **Migration file structure:** Created `supabase/` folder for organizing database schemas
   - `supabase/migrations/NNN_description.sql` — version-controlled schema changes
   - `supabase/seeds/{table}_seed_template.sql` — reusable SQL templates for manual data entry
@@ -69,7 +78,7 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Updated API endpoint to order by `order_index` → `stars` → `date_created`
 - Seed script defaults all existing projects to `is_visible = true`, `order_index = null`
 - Added data management workflow documentation (SQL examples for common operations)
-- Future table migrations (certificates, accomplishments) will follow same pattern with migration files and seed templates
+- Future table migrations (certificates, accomplishments) will follow same pattern with migration files, seed templates, and type generation
 
 **Next steps:**
 1. Create Supabase project

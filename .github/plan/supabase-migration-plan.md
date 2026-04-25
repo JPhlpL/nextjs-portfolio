@@ -43,10 +43,19 @@ ORDER BY order_index ASC NULLS LAST,  -- Manual pins first
 
 ## Phase 1: Setup & Infrastructure
 
-### 1.1 Install Supabase client
+### 1.1 Install Supabase client & CLI
 
 ```bash
+# Install Supabase client library
 npm install @supabase/supabase-js
+
+# Install Supabase CLI (for type generation)
+npm install -D supabase
+```
+
+Or install Supabase CLI globally:
+```bash
+npm install -g supabase
 ```
 
 ### 1.2 Environment configuration
@@ -358,18 +367,218 @@ Then copy the SQL from sections 2.2 and 2.3 into these files.
 supabase/seeds/*_data.sql
 ```
 
+---
+
+## Phase 2.5: Generate TypeScript types from schema
+
+After creating the database schema, generate TypeScript types for type safety.
+
+### 2.5.1 Link your Supabase project
+
+```bash
+# Login to Supabase CLI
+npx supabase login
+
+# Link to your project (get project ID from Supabase dashboard URL)
+npx supabase link --project-ref your-project-id
+```
+
+### 2.5.2 Generate types
+
+```bash
+# Generate TypeScript types from your database schema
+npx supabase gen types typescript --linked > lib/supabase/database.types.ts
+```
+
+This creates a `database.types.ts` file with complete type definitions for all your tables.
+
+### 2.5.3 Update client utilities to use generated types
+
+**File:** `lib/supabase/client.ts`
+
+```typescript
+import { createClient } from '@supabase/supabase-js'
+import type { Database } from './database.types'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+
+// Read-only client with type safety
+export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
+
+// Export types for use in components
+export type Tables<T extends keyof Database['public']['Tables']> = 
+  Database['public']['Tables'][T]['Row']
+
+export type Enums<T extends keyof Database['public']['Enums']> = 
+  Database['public']['Enums'][T]
+
+// Convenience type exports
+export type Project = Tables<'projects'>
+```
+
+**File:** `lib/supabase/server.ts`
+
+```typescript
+import { createClient } from '@supabase/supabase-js'
+import type { Database } from './database.types'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
+
+// Admin client for seeding scripts (NOT used in the app)
+export const supabaseAdmin = createClient<Database>(
+  supabaseUrl, 
+  supabaseServiceKey,
+  {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  }
+)
+```
+
+### 2.5.4 Usage in components
+
+```typescript
+import { supabase, type Project } from '@/lib/supabase/client'
+
+// Type-safe query
+const { data: projects, error } = await supabase
+  .from('projects')  // ✅ TypeScript knows 'projects' exists
+  .select('*')       // ✅ Auto-complete for columns
+  .eq('is_visible', true)  // ✅ Type-checked column names & values
+
+// projects is typed as Project[] automatically
+projects?.forEach((project: Project) => {
+  console.log(project.project)      // ✅ Auto-complete
+  console.log(project.description)  // ✅ Type-safe
+})
+```
+
+### 2.5.5 Regenerating types after schema changes
+
+Whenever you modify the database schema (add tables, columns, etc.), regenerate types:
+
+```bash
+# After running a new migration in Supabase
+npx supabase gen types typescript --linked > lib/supabase/database.types.ts
+```
+
+**Add to `package.json` scripts:**
+```json
+{
+  "scripts": {
+    "db:types": "supabase gen types typescript --linked > lib/supabase/database.types.ts"
+  }
+}
+```
+
+Then run: `npm run db:types`
+
+### 2.5.6 File structure after type generation
+
+```
+lib/
+└── supabase/
+    ├── client.ts              # Typed client for app
+    ├── server.ts              # Typed admin client for seeds
+    └── database.types.ts      # Auto-generated types (DO NOT EDIT MANUALLY)
+```
+
+**Commit `database.types.ts`?** Yes — commit it so team members have types without needing Supabase CLI access.
+
+### 2.5.7 Example: Generated types structure
+
+After running `npm run db:types`, you'll get a file like this:
+
+```typescript
+// lib/supabase/database.types.ts (auto-generated, do not edit manually)
+
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export interface Database {
+  public: {
+    Tables: {
+      projects: {
+        Row: {
+          id: string
+          project: string
+          description: string | null
+          language: string | null
+          date_created: string
+          stars: number
+          images: string[]
+          website: string | null
+          topics: string[]
+          repository_link: string | null
+          is_visible: boolean
+          order_index: number | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          project: string
+          description?: string | null
+          language?: string | null
+          date_created?: string
+          stars?: number
+          images?: string[]
+          website?: string | null
+          topics?: string[]
+          repository_link?: string | null
+          is_visible?: boolean
+          order_index?: number | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          project?: string
+          description?: string | null
+          // ... all fields optional for updates
+        }
+      }
+      // Future tables will appear here automatically
+    }
+    Views: {}
+    Functions: {}
+    Enums: {}
+  }
+}
+```
+
+This provides:
+- ✅ `Row` type: full record returned from SELECT
+- ✅ `Insert` type: fields for INSERT operations
+- ✅ `Update` type: partial fields for UPDATE operations
+- ✅ Nullable columns correctly typed
+- ✅ Array types preserved
+- ✅ Auto-updated when schema changes
+
+---
+
 ### 2.3 Data seeding script
 
 **File:** `scripts/seed-projects.ts` (new)
 
 ```typescript
 import { createClient } from '@supabase/supabase-js'
+import type { Database } from '../lib/supabase/database.types'
 import githubProjects from './github.json'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
 
-const supabase = createClient(supabaseUrl, supabaseServiceKey)
+const supabase = createClient<Database>(supabaseUrl, supabaseServiceKey)
 
 async function seedProjects() {
   console.log(`Seeding ${githubProjects.length} projects...`)
@@ -404,7 +613,7 @@ async function seedProjects() {
 seedProjects()
 ```
 
-**Note:** `order_index: null` means projects will auto-sort by stars then date. If you want to preserve the current order from `github.json`, change it to `order_index: index + 1` (1-indexed) or `order_index: index * 10` (gaps for future insertions).
+**Note:** With typed client, TypeScript will validate that all columns match the database schema.
 
 
 **Add to `package.json` scripts:**
@@ -412,7 +621,8 @@ seedProjects()
 ```json
 {
   "scripts": {
-    "seed:projects": "tsx scripts/seed-projects.ts"
+    "seed:projects": "tsx scripts/seed-projects.ts",
+    "db:types": "supabase gen types typescript --linked > lib/supabase/database.types.ts"
   }
 }
 ```
@@ -433,11 +643,11 @@ npm install -D tsx
 
 ```typescript
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../lib/supabase/client'
+import { supabase, type Project } from '../../lib/supabase/client'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<Project[] | { error: string }>
 ) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -456,11 +666,12 @@ export default async function handler(
     return res.status(500).json({ error: 'Failed to fetch projects' })
   }
 
-  return res.status(200).json(projects)
+  // projects is automatically typed as Project[]
+  return res.status(200).json(projects || [])
 }
 ```
 
-> **Sort behavior:** Projects with an `order_index` will appear first (in ascending order: 1, 2, 3...), followed by projects without `order_index` (null) sorted by stars then date. This gives you manual control over featured projects while auto-sorting the rest.
+> **Type safety:** The response is typed as `Project[]`, and TypeScript validates all column names and values.
 
 ### 3.2 Update `ProjectsGrid.jsx`
 
@@ -490,11 +701,24 @@ export async function getServerSideProps({ query }) {
 
 **After:**
 
-```javascript
-import { supabase } from '../../lib/supabase/client'
+```typescript
+import { supabase, type Project } from '../../lib/supabase/client'
+import type { GetServerSideProps } from 'next'
 
-export async function getServerSideProps({ query }) {
-  const { project } = query;
+interface ProjectPageProps {
+  project: Project
+}
+
+export default function ProjectSingle({ project }: ProjectPageProps) {
+  // Component implementation...
+}
+
+export const getServerSideProps: GetServerSideProps<ProjectPageProps> = async ({ query }) => {
+  const { project } = query
+
+  if (typeof project !== 'string') {
+    return { notFound: true }
+  }
 
   const { data: foundProject, error } = await supabase
     .from('projects')
@@ -514,6 +738,8 @@ export async function getServerSideProps({ query }) {
   }
 }
 ```
+
+> **Type safety:** `foundProject` is automatically typed as `Project`, and the component props are strictly typed.
 
 **Optional:** Migrate to `getStaticPaths` + `getStaticProps` for static generation:
 
@@ -697,11 +923,13 @@ WHERE highlight = false;
 
 ```typescript
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { supabase } from '../../lib/supabase/client'
+import { supabase, type Tables } from '../../lib/supabase/client'
+
+type Certificate = Tables<'certificates'>
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<Certificate[] | { error: string }>
 ) {
   const { data, error } = await supabase
     .from('certificates')
@@ -712,9 +940,18 @@ export default async function handler(
     .order('created_at', { ascending: false })
 
   if (error) return res.status(500).json({ error: error.message })
-  return res.status(200).json(data)
+  return res.status(200).json(data || [])
 }
 ```
+
+#### Step 4: Regenerate types
+
+```bash
+# After adding the new table, regenerate types
+npm run db:types
+```
+
+The new `certificates` table will automatically appear in `database.types.ts` with full type definitions.
 
 #### Example: Accomplishments table
 
@@ -864,10 +1101,13 @@ WHERE p.id = n.id;
 
 - [x] Plan documented (this file)
 - [ ] Supabase project created
+- [ ] Supabase CLI installed and linked
 - [ ] `projects` table schema deployed
+- [ ] **TypeScript types generated** from schema (`lib/supabase/database.types.ts`)
+- [ ] Client utilities updated with typed `createClient<Database>`
 - [ ] Data seeded from `github.json`
-- [ ] `/api/projects` endpoint live
-- [ ] `ProjectsGrid` + `[project].jsx` migrated & tested
+- [ ] `/api/projects` endpoint live (with type safety)
+- [ ] `ProjectsGrid` + `[project].jsx` migrated & tested with types
 - [ ] Performance benchmarked
 - [ ] Documentation updated (`architecture.md`, `implementation.md`, `changelog.md`)
 - [ ] Old JSON + API route removed (or archived)
@@ -876,13 +1116,14 @@ WHERE p.id = n.id;
 
 ## Timeline estimate
 
-| Phase                  | Estimated time |
-| ---------------------- | -------------- |
-| Phase 1: Setup         | 30 min         |
-| Phase 2: Schema        | 45 min         |
-| Phase 3: Code migration| 1.5 hours      |
-| Phase 4: Testing       | 1 hour         |
-| Phase 5: Cleanup       | 30 min         |
-| **Total**              | **~4 hours**   |
+| Phase                       | Estimated time |
+| --------------------------- | -------------- |
+| Phase 1: Setup              | 30 min         |
+| Phase 2: Schema             | 45 min         |
+| Phase 2.5: Type generation  | 15 min         |
+| Phase 3: Code migration     | 1.5 hours      |
+| Phase 4: Testing            | 1 hour         |
+| Phase 5: Cleanup            | 30 min         |
+| **Total**                   | **~4.5 hours** |
 
 > Actual time may vary based on unforeseen issues (auth setup, debugging RLS, etc.).
