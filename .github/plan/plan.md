@@ -101,11 +101,45 @@ A consolidated backlog combining the existing `todo.md`, in-code `TODO`s, and ob
 - Wire `react-tooltip` (already a dependency) onto stack tiles to show short descriptions on hover.
 - Add Plausible or Vercel Analytics for traffic insights.
 
+## Active initiatives
+
+### Supabase migration (Status: 📋 Planning)
+
+**Goal:** Replace static JSON files with Supabase PostgreSQL database, starting with projects data.
+
+**See:** [`supabase-migration-plan.md`](./supabase-migration-plan.md) for full 5-phase implementation guide.
+
+**Key architectural decisions:**
+- **Read-only app:** Next.js only performs GET operations; all modifications via Supabase dashboard
+- **Standard column pattern:** Every table includes `is_visible` (boolean) + `order_index` (integer)
+- **Hybrid sorting:** Manual pins first (order_index 1, 2, 3...), then auto-sort by stars/date
+
+**Quick summary:**
+1. Install `@supabase/supabase-js`, create client utilities
+2. Design `projects` table schema with `is_visible` + `order_index` columns
+3. Seed data from `scripts/github.json` 
+4. Replace `/api/github` with `/api/projects` (Supabase read-only client)
+5. Test, benchmark, update docs, cleanup old JSON
+
+**Benefits:**
+- Dynamic data updates without redeploying
+- Curate featured projects with `order_index`
+- Hide drafts with `is_visible = false`
+- Scalable pattern for certificates, accomplishments, etc.
+- Queryable with filters, pagination, full-text search
+
+**Timeline:** ~4 hours estimated
+
+**Future tables:** The `is_visible` + `order_index` pattern will be applied to certificates and accomplishments tables when those are migrated.
+
+---
+
 ## Definition of done for this planning pass
 
 - [x] `structure.md` — directory map
-- [x] `architecture.md` — stack, topology, data flow
+- [x] `architecture.md` — stack, topology, data flow (with Mermaid diagrams)
 - [x] `implementation.md` — per-route wiring
 - [x] `contents.md` — data inventory
 - [x] `plan.md` — backlog (this file)
-- [x] `changelog.md` — historical record
+- [x] `changelog.md` — historical record + planning log
+- [x] `supabase-migration-plan.md` — database migration strategy

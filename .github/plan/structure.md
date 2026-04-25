@@ -18,6 +18,10 @@ nextjs-portfolio/
 ├── components/                   # React UI components (see below)
 ├── data/                         # Static JS data sources for the UI
 ├── hooks/                        # Top-level reusable React hooks
+├── lib/
+│   └── supabase/                 # Supabase client utilities
+│       ├── client.ts             # Read-only client for app
+│       └── server.ts             # Admin client for seeding scripts
 ├── next.config.js                # Next.js config (reactStrictMode: true)
 ├── nextjs-portfolio.code-workspace
 ├── package.json                  # Dependencies + npm scripts
@@ -28,6 +32,15 @@ nextjs-portfolio/
 ├── scripts/                      # Python utilities for GitHub data
 ├── styles/
 │   └── globals.css               # Tailwind base + custom @font-face declarations
+├── supabase/
+│   ├── migrations/               # Database schema version history
+│   │   ├── 001_create_projects_table.sql
+│   │   ├── 002_create_certificates_table.sql      # Future
+│   │   └── 003_create_accomplishments_table.sql   # Future
+│   └── seeds/                    # SQL templates for manual data entry
+│       ├── projects_seed_template.sql
+│       ├── certificates_seed_template.sql         # Future
+│       └── accomplishments_seed_template.sql      # Future
 ├── tailwind.config.js            # Theme tokens (colors, container) + forms plugin
 └── todo.md                       # Personal punch list (see plan.md)
 ```
@@ -141,3 +154,32 @@ styles/
 └── globals.css                   # Tailwind directives, GeneralSans @font-face set,
                                   # .scrollToTop styling, vertical-timeline overrides
 ```
+
+## `supabase/` — Database schema & seeds
+
+```
+supabase/
+├── migrations/                   # Version-controlled schema changes
+│   ├── 001_create_projects_table.sql
+│   ├── 002_create_certificates_table.sql      # Future
+│   └── 003_create_accomplishments_table.sql   # Future
+└── seeds/                        # SQL templates for manual data entry
+    ├── projects_seed_template.sql
+    ├── certificates_seed_template.sql         # Future
+    └── accomplishments_seed_template.sql      # Future
+```
+
+**Naming conventions:**
+- Migrations: `NNN_description.sql` (sequential numbering, e.g., 001, 002, 003...)
+- Seeds: `{table}_seed_template.sql` (reusable templates with examples)
+
+**Workflow:**
+1. Create migration file with schema changes
+2. Run in Supabase SQL Editor
+3. Use seed template for adding data manually
+4. Version control both migrations and templates
+
+**Future tables:** Every table will follow the standard pattern:
+- `is_visible` BOOLEAN (show/hide control)
+- `order_index` INTEGER (manual sort order)
+- `created_at` / `updated_at` (audit trail)
