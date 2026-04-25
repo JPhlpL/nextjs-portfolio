@@ -225,3 +225,13 @@ npm run lint   # next lint
 - `data/projectsData.js` is **dead code** at the page level — current pages read GitHub data instead. It's preserved from the upstream template.
 - Both `Modal` (success/error popup) and `HireMeModal` exist, but `HireMeModal` is **imported but not rendered** in `AppHeader.jsx` (no trigger wired up).
 - The `Button` component (`components/reusable/Button.jsx`) is intentionally minimal — styling is applied by the parent `<span>` wrapper around it.
+- **Image paths are versatile** — the `images` field (text array) supports both local paths (`/images/...`) and external URLs (`https://cdn...`). This allows mixing local (fast, Vercel CDN) and external CDN images (smaller repo) in the same project. Next.js `<Image>` component optimizes both types (WebP/AVIF conversion, responsive sizes). External URLs require domain configuration in `next.config.js` via `remotePatterns`.
+
+## Future Supabase migration notes
+
+When projects data moves to Supabase:
+- **Read-only architecture** — App performs GET operations only; all writes via Supabase dashboard
+- **Standard columns** — Every table includes `is_visible` (boolean) and `order_index` (integer) for visibility control and manual sorting
+- **Type safety** — TypeScript types auto-generated from schema via Supabase CLI (`npm run db:types`)
+- **Migration files** — Version-controlled in `supabase/migrations/NNN_description.sql`
+- **Seed templates** — Reusable SQL examples in `supabase/seeds/{table}_seed_template.sql`

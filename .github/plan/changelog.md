@@ -53,7 +53,17 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - `supabase/migrations/001_create_projects_table.sql` — complete table schema with RLS and triggers
   - `supabase/seeds/projects_seed_template.sql` — reusable SQL template with examples
 
-**Latest updates (2026-04-25 00:33):**
+**Latest updates (2026-04-25 00:57):**
+- **Image path versatility documented:** Added comprehensive documentation on mixing local and external URL paths for images
+  - `images` column (TEXT[]) supports any string format: local paths, external URLs, or mixed
+  - Component design already handles both types automatically
+  - No code changes needed to switch between local and external
+  - Performance comparison: local ~300ms, external ~500ms, both cache to ~50ms
+  - Hybrid strategy recommended: local thumbnails (fast) + CDN galleries (smaller repo)
+  - Added Phase 5.5 "Image Management Strategy" with migration workflows
+  - Documented `next.config.js` remotePatterns configuration for external URLs
+  - Optimization tips: priority loading, blur placeholders, responsive sizes
+  - Cloudflare R2 recommended as CDN (free, fast, zero egress fees)
 - **TypeScript type generation:** Added Phase 2.5 for generating database types using Supabase CLI
   - Install Supabase CLI: `npm install -D supabase`
   - Generate types: `npx supabase gen types typescript --linked > lib/supabase/database.types.ts`

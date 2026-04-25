@@ -184,3 +184,8 @@ supabase/
 - `is_visible` BOOLEAN (show/hide control)
 - `order_index` INTEGER (manual sort order)
 - `created_at` / `updated_at` (audit trail)
+
+**Image/media columns:** Use `TEXT` or `TEXT[]` for paths, supporting both:
+- Local paths: `/images/projects/file.png` (served from Vercel CDN)
+- External URLs: `https://cdn.yoursite.com/file.png` (requires `next.config.js` domain config)
+- Mixed: Can combine both in same array for optimal performance (local thumbnails + CDN galleries)

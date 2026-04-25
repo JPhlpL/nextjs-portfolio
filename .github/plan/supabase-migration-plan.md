@@ -39,6 +39,48 @@ ORDER BY order_index ASC NULLS LAST,  -- Manual pins first
          date_created DESC             -- Then by recency
 ```
 
+### 4. Flexible image paths (local + external URLs)
+
+The `images` column (`TEXT[]`) supports **any string format**:
+
+- ✅ **Local paths:** `/images/projects/taja1.png` (served from Vercel CDN)
+- ✅ **External URLs:** `https://cdn.yoursite.com/projects/taja1.png`
+- ✅ **Mixed in same project:** Can combine both local and external in one array
+
+**Example:**
+```json
+"images": [
+  "/images/projects/thumbnail.png",           // Local (fast)
+  "https://cdn.yoursite.com/detail1.png",     // External CDN
+  "/images/projects/screenshot.png",          // Local (fast)
+  "https://r2.cloudflare.com/gallery1.png"    // External CDN
+]
+```
+
+**Performance:**
+- Local images: ~300ms first load (Next.js optimization)
+- External images: ~500ms first load (fetch + Next.js optimization)
+- Cached: ~50ms for both types
+- All images lazy-load in parallel
+
+**Configuration required for external URLs:**
+```js
+// next.config.js
+module.exports = {
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.yoursite.com' },
+      { protocol: 'https', hostname: '*.r2.cloudflarestorage.com' },
+    ],
+  },
+}
+```
+
+**Strategy:**
+- Keep **thumbnails/hero images local** for fast first impression
+- Move **large galleries to CDN** to reduce repo size
+- Migrate gradually: no need to move everything at once
+
 ---
 
 ## Phase 1: Setup & Infrastructure
@@ -147,7 +189,7 @@ Based on `scripts/github.json` structure:
 | `language`        | `text`                | nullable                          | Primary language (e.g., "Python")    |
 | `date_created`    | `timestamptz`         | `NOT NULL DEFAULT now()`          | Creation date (ISO 8601)             |
 | `stars`           | `integer`             | `NOT NULL DEFAULT 0`              | GitHub stars or manual count         |
-| `images`          | `text[]`              | nullable, `DEFAULT '{}'`          | Array of image paths                 |
+| `images`          | `text[]`              | nullable, `DEFAULT '{}'`          | Array of image paths (local or external URLs) |
 | `website`         | `text`                | nullable                          | Live URL                             |
 | `topics`          | `text[]`              | nullable, `DEFAULT '{}'`          | Tags/topics                          |
 | `repository_link` | `text`                | nullable                          | GitHub repo URL                      |
@@ -829,8 +871,128 @@ If issues arise, revert to JSON:
 - [ ] Update `architecture.md`, `implementation.md`, `structure.md` to reflect Supabase
 - [ ] Add Supabase connection health check endpoint (`/api/health`)
 - [ ] Document the read-only architecture pattern in project docs
+- [ ] Add `next.config.js` image domains configuration when using external URLs
 
-### 5.2 Apply `order_index` pattern to other tables
+---
+
+## Phase 5.5: Image Management Strategy
+
+Your portfolio is designed to support **flexible image paths** (local + external URLs). Here's how to manage them:
+
+### Image Path Versatility
+
+The `images` column is a **text array** that accepts any string format:
+
+```sql
+-- All local paths (current)
+images = ARRAY['/images/projects/taja1.png', '/images/projects/taja2.png']
+
+-- All external URLs
+images = ARRAY['https://cdn.yoursite.com/taja1.png', 'https://cdn.yoursite.com/taja2.png']
+
+-- Mixed (hybrid approach) ← RECOMMENDED
+images = ARRAY[
+  '/images/projects/thumbnail.png',              -- Local: fast hero image
+  'https://cdn.yoursite.com/detail1.png',        -- CDN: large detail
+  'https://r2.cloudflare.com/detail2.png'        -- CDN: large detail
+]
+```
+
+**Component handles both automatically** (no code changes needed):
+
+```jsx
+// pages/projects/[project].jsx (lines 77-91)
+{project.images.map((imgSrc, index) => (
+  <Image
+    src={imgSrc}  // Works with local OR external URLs!
+    fill
+    objectFit="contain"
+  />
+))}
+```
+
+### Configuration for External URLs
+
+When you start using external URLs, add domains to `next.config.js`:
+
+```js
+// next.config.js
+module.exports = {
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.yoursite.com',  // Your custom domain
+      },
+      {
+        protocol: 'https',
+        hostname: '*.r2.cloudflarestorage.com',  // Cloudflare R2
+      },
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',  // Vercel Blob
+      },
+    ],
+  },
+}
+```
+
+### Performance Comparison
+
+| Path Type | First Load | Cached | Next.js Optimization | Best Use Case |
+|-----------|------------|--------|---------------------|---------------|
+| Local `/images/` | ~300ms | ~50ms | ✅ WebP/AVIF | Thumbnails, hero images |
+| External CDN | ~500ms | ~50ms | ✅ WebP/AVIF | Large galleries, videos |
+
+**Load behavior:**
+- Images load **in parallel** (not sequential)
+- Local images appear faster (~200ms advantage)
+- External images load while user views local ones
+- All images lazy-load below fold
+
+### Migration Strategy: Gradual Hybrid Approach
+
+**Keep critical images local, move large files to CDN:**
+
+```sql
+-- Strategy: Local thumbnail + CDN gallery
+UPDATE projects 
+SET images = ARRAY[
+  '/images/projects/thumbnail.png',        -- Fast first impression (local)
+  'https://cdn.site.com/gallery1.png',     -- Large file (CDN)
+  'https://cdn.site.com/gallery2.png',     -- Large file (CDN)
+  'https://cdn.site.com/gallery3.png'      -- Large file (CDN)
+]
+WHERE project = 'My Project';
+```
+
+**Benefits:**
+- ✅ Fast first impression (local thumbnail)
+- ✅ Smaller repo (large files on CDN)
+- ✅ Gradual migration (move images over time)
+- ✅ Best of both worlds
+
+### When to Use Each Type
+
+| Image Type | Recommended Path | Reason |
+|------------|-----------------|--------|
+| **Thumbnails** | Local `/images/` | Critical for LCP (Largest Contentful Paint) |
+| **Hero images** | Local `/images/` | Fast first impression |
+| **Large galleries (>500KB)** | External CDN | Reduce repo size |
+| **Videos** | External CDN | Too large for repo |
+| **User-uploaded content** | External CDN | Dynamic, not in git |
+
+### Recommended CDN: Cloudflare R2
+
+**Why R2 for portfolios:**
+- Free 10GB storage
+- Zero egress fees (AWS charges $0.09/GB)
+- Global edge CDN included
+- S3-compatible API
+- Fast: ~200ms edge latency
+
+---### 5.2 Apply `order_index` pattern to other tables
 
 When migrating certificates, accomplishments, and other data, follow this workflow:
 

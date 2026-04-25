@@ -6,9 +6,11 @@ This folder contains version-controlled database schema changes and reusable see
 
 ```
 supabase/
-├── migrations/          # Sequential schema changes
+├── README.md                    # This file
+├── IMAGE_PATHS.md              # Guide for managing local + external image URLs
+├── migrations/                  # Sequential schema changes
 │   └── 001_create_projects_table.sql
-└── seeds/              # Reusable SQL templates
+└── seeds/                      # Reusable SQL templates
     └── projects_seed_template.sql
 ```
 
@@ -97,6 +99,26 @@ The Next.js app **only performs GET operations**. All data modifications happen 
 - ❌ Never from Next.js app endpoints
 
 This simplifies security and eliminates the need for authentication initially.
+
+## Image Path Flexibility
+
+Image columns (`TEXT` or `TEXT[]`) support both local and external URLs:
+
+```sql
+-- Local (fast, Vercel CDN)
+images = ARRAY['/images/projects/file.png']
+
+-- External (CDN, smaller repo)
+images = ARRAY['https://cdn.yoursite.com/file.png']
+
+-- Mixed (recommended)
+images = ARRAY[
+  '/images/projects/thumbnail.png',        -- Fast hero
+  'https://cdn.yoursite.com/gallery.png'   -- Large detail
+]
+```
+
+**See [`IMAGE_PATHS.md`](./IMAGE_PATHS.md) for full guide on mixing local and CDN images.**
 
 ---
 
