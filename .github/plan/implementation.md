@@ -58,7 +58,7 @@ Three Framer Motion `opacity` fade sections:
 
 Client-side flow:
 
-1. `useEffect` calls `fetch('/api/github')` → populates `projects` state.
+1. `useEffect` calls `fetch('/api/projects')` → populates `projects` state.
 2. Derives unique `languages` (treating null language as `"Unknown"`).
 3. Filters by:
    - `searchProject` — substring match across `project`, `language`, `topics`, `website`, `repository_link`.
@@ -66,11 +66,18 @@ Client-side flow:
 4. Paginates 9 per page; renders `<` 1 2 3 ... `>` controls.
 5. Each card is `<ProjectSingle />` — a `motion.div` linking to `/projects/${project.project}`.
 
+**Data source:** Supabase via `/api/projects` (filters `is_visible = true`, sorts by `order_index` → `stars` → `date_created`).
+
 ### `/projects/[project]` — `pages/projects/[project].jsx`
 
-- `getServerSideProps` reads the `project` query param and finds the matching object in the imported `scripts/github.json`. Returns `{ notFound: true }` if missing.
+- `getServerSideProps` queries Supabase to find the project by `project` name (URL slug).
+- Filters by `is_visible = true` to prevent direct access to hidden/draft projects.
+- Returns `{ notFound: true }` if project doesn't exist or isn't visible.
 - Renders header (title, date, language, topics), description, "View Repository" + "Visit Website" buttons.
 - If `project.images` exists, renders a 3-column gallery; clicking opens a full-screen `Image` modal with click-outside-to-close.
+- **Image paths:** Supports both local (`/images/...`) and external (`https://...`) URLs automatically.
+
+**Data source:** Direct Supabase query via `lib/supabase/client.ts` in `getServerSideProps`.
 
 ### `/certificates` — `pages/certificates/index.jsx` → `CertificatesGrid`
 
@@ -92,7 +99,7 @@ Client-side flow:
 - **`ContactForm`** uses `emailjs.sendForm` **twice** (notification + confirmation templates) and races them with `Promise.all`. On success → `Modal` (success). On failure → `Modal` (error with `error.text`).
 - **`ContactDetails`** is a static list of 3 contact items.
 
-### `/api/github` — `pages/api/github.js`
+### `/api/github` — `pages/api/github.js` (LEGACY)
 
 ```1:11:pages/api/github.js
 import fs from 'fs';
@@ -108,6 +115,246 @@ export default function handler(req, res) {
 ```
 
 Reads the committed JSON synchronously per request. Cheap because the file ships in the bundle; the synchronous `readFileSync` is fine on serverless because Node holds the file handle hot.
+
+**⚠️ LEGACY:** This endpoint is being phased out in favor of `/api/projects` (Supabase-powered).
+
+### `/api/projects` — `pages/api/projects.ts` (NEW - Supabase)
+
+```typescript
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { supabase } from '../../lib/supabase/client';
+import type { Tables } from '../../lib/supabase/client';
+
+type Project = Tables<'projects'>;
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Project[] | { error: string }>
+) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .eq('is_visible', true)
+      .order('order_index', { ascending: true, nullsFirst: false })
+      .order('stars', { ascending: false })
+      .order('date_created', { ascending: false });
+
+    if (error) {
+      console.error('Supabase error:', error);
+      return res.status(500).json({ error: 'Failed to fetch projects' });
+    }
+
+    return res.status(200).json(data || []);
+  } catch (error) {
+    console.error('API error:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+}
+```
+
+**Key features:**
+- **Type safety:** Uses auto-generated TypeScript types from Supabase schema
+- **Visibility filter:** Only returns projects where `is_visible = true`
+- **Hybrid sorting:** 
+  1. `order_index` (manual pins) — NULLS LAST
+  2. `stars` (popularity) — descending
+  3. `date_created` (recency) — descending
+- **Read-only:** No authentication required (RLS enforces read-only access)
+
+**Data flow:**
+1. Client → `/api/projects`
+2. API → Supabase (read-only client)
+3. Supabase → Filtered & sorted `projects`
+4. API → JSON response
+
+## Supabase Integration
+
+The portfolio uses **Supabase (PostgreSQL)** for project data with a **read-only architecture** — the Next.js app only performs GET operations.
+
+### Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Next.js Application                       │
+├─────────────────────────────────────────────────────────────┤
+│  Read-Only Flow (GET):                                       │
+│  ┌──────────────┐      ┌──────────────┐     ┌────────────┐ │
+│  │ ProjectsGrid │─────▶│ /api/projects│────▶│  Supabase  │ │
+│  │  (client)    │      │   (typed)    │     │  (public   │ │
+│  └──────────────┘      └──────────────┘     │   RLS)     │ │
+│                                              └────────────┘ │
+│  ┌──────────────┐                           ┌────────────┐ │
+│  │ [project].jsx│──────────────────────────▶│  Supabase  │ │
+│  │ (SSR query)  │                           │  (public   │ │
+│  └──────────────┘                           │   RLS)     │ │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│            Admin Flow (INSERT/UPDATE/DELETE):                │
+│  ┌────────────┐      ┌──────────────────────────────────┐  │
+│  │ Supabase   │──────│  Table Editor / SQL Editor       │  │
+│  │ Dashboard  │      │  (Manual data management)        │  │
+│  └────────────┘      └──────────────────────────────────┘  │
+│                                                              │
+│  ┌────────────┐                                             │
+│  │ Seed Script│──────▶ supabaseAdmin (service role)        │
+│  │ (one-time) │        bypasses RLS for bulk import        │
+│  └────────────┘                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Client Utilities
+
+#### `lib/supabase/client.ts` (Browser-safe)
+
+```typescript
+import { createClient } from '@supabase/supabase-js';
+import type { Database } from './database.types';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
+  auth: { persistSession: false },
+});
+
+export type Tables<T extends keyof Database['public']['Tables']> =
+  Database['public']['Tables'][T]['Row'];
+```
+
+**Used by:**
+- `/api/projects.ts` — Fetches visible projects
+- `pages/projects/[project].jsx` — SSR project detail query
+
+#### `lib/supabase/server.ts` (Server-only)
+
+```typescript
+import { createClient } from '@supabase/supabase-js';
+import type { Database } from './database.types';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+
+export const supabaseAdmin = createClient<Database>(
+  supabaseUrl,
+  supabaseServiceRoleKey,
+  { auth: { autoRefreshToken: false, persistSession: false } }
+);
+```
+
+**Used by:**
+- `scripts/seed-projects.js` — Bypasses RLS for bulk import
+
+### Database Schema
+
+**Table:** `projects`
+
+| Column            | Type        | Constraints                     | Description                          |
+|-------------------|-------------|---------------------------------|--------------------------------------|
+| `id`              | UUID        | PRIMARY KEY, `uuid_generate_v4()`| Auto-generated unique identifier     |
+| `project`         | TEXT        | UNIQUE, NOT NULL                | Project name (URL slug)              |
+| `description`     | TEXT        | NOT NULL                        | Project description                  |
+| `language`        | TEXT        | NOT NULL                        | Primary programming language         |
+| `date_created`    | TIMESTAMPTZ | NOT NULL                        | Creation date (ISO 8601)             |
+| `stars`           | INTEGER     | DEFAULT 0                       | GitHub stars count                   |
+| `images`          | TEXT[]      | DEFAULT '{}'                    | Image paths (local or external URLs) |
+| `website`         | TEXT        | nullable                        | Live website URL                     |
+| `topics`          | TEXT[]      | DEFAULT '{}'                    | Tech stack tags                      |
+| `repository_link` | TEXT        | NOT NULL                        | GitHub repository URL                |
+| `is_visible`      | BOOLEAN     | NOT NULL, DEFAULT true          | Visibility control (draft mode)      |
+| `order_index`     | INTEGER     | nullable, DEFAULT null          | Manual sort order (1, 2, 3...)       |
+| `created_at`      | TIMESTAMPTZ | DEFAULT now()                   | Record creation timestamp            |
+| `updated_at`      | TIMESTAMPTZ | DEFAULT now()                   | Auto-updated on change               |
+
+**Indexes:**
+- `idx_projects_project` — UNIQUE index on `project` (URL lookups)
+- `idx_projects_language` — Index on `language` (filtering)
+- `idx_projects_date_created` — Index on `date_created` (sorting)
+- `idx_projects_is_visible` — Index on `is_visible` (filtering)
+- `idx_projects_order_index` — Index on `order_index` NULLS LAST (hybrid sort)
+
+**Row Level Security (RLS):**
+- **SELECT:** Public read access for `is_visible = true` projects only
+- **INSERT/UPDATE/DELETE:** Blocked for all users (admin via dashboard only)
+
+**Triggers:**
+- `updated_at` auto-updates on any row modification
+
+### Type Generation
+
+TypeScript types are auto-generated from the Supabase schema:
+
+```bash
+npm run db:types
+```
+
+This runs:
+```bash
+npx supabase gen types typescript --linked > lib/supabase/database.types.ts
+```
+
+**Result:** Full type safety for all Supabase queries:
+```typescript
+const { data, error } = await supabase
+  .from('projects')  // ✅ Type-checked table name
+  .select('*')
+  .eq('is_visible', true);  // ✅ Type-checked column & value
+```
+
+### Data Seeding
+
+**Script:** `scripts/seed-projects.js`
+
+Imports existing `github.json` data into Supabase:
+
+```bash
+npm run db:seed
+```
+
+**Process:**
+1. Reads `scripts/github.json`
+2. Transforms data (adds `is_visible: true`, `order_index: null`)
+3. Bulk inserts via `supabaseAdmin` (bypasses RLS)
+4. Logs success summary
+
+**One-time operation** — run once after initial Supabase setup.
+
+### Setup Checklist
+
+See `SUPABASE_SETUP.md` for full instructions:
+
+1. ✅ Create Supabase project
+2. ✅ Update `.env` with credentials
+3. ✅ Run `supabase/migrations/001_create_projects_table.sql` in SQL Editor
+4. ✅ Link project: `npx supabase link --project-ref xxxxx`
+5. ✅ Generate types: `npm run db:types`
+6. ✅ Seed data: `npm run db:seed`
+7. ✅ Test: `npm run dev` → `/projects`
+
+### Image Path Management
+
+The `images` column supports **local paths** AND **external URLs**:
+
+```sql
+-- Local (Vercel CDN)
+images = ARRAY['/images/projects/screenshot.png']
+
+-- External CDN (requires next.config.js setup)
+images = ARRAY['https://cdn.yoursite.com/screenshot.png']
+
+-- Mixed (recommended)
+images = ARRAY[
+  '/images/projects/thumbnail.png',        -- Fast local hero
+  'https://cdn.yoursite.com/gallery.png'   -- CDN for large files
+]
+```
+
+**See:** `supabase/IMAGE_PATHS.md` for detailed guide.
 
 ## Hooks
 

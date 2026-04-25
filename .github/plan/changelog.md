@@ -8,9 +8,101 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased] — In Progress
 
-### 2026-04-25 — Planning: Supabase migration
+### 2026-04-25 02:56 — Implementation: Supabase migration (COMPLETED)
 
-**Status:** 📋 Planning phase
+**Status:** ✅ Code complete — Ready for user setup and testing
+
+**Objective:** Migrate from static JSON files to Supabase as the primary data source for projects.
+
+**Changes implemented:**
+
+- **Phase 1 — Infrastructure setup (COMPLETED):**
+  - ✅ Installed `@supabase/supabase-js` v2.x
+  - ✅ Installed `supabase` CLI as dev dependency for type generation
+  - ✅ Created `lib/supabase/client.ts` — Read-only typed client for browser/API routes
+  - ✅ Created `lib/supabase/server.ts` — Admin client for seeding scripts (bypasses RLS)
+  - ✅ Created `lib/supabase/database.types.ts` — TypeScript types (placeholder, will be auto-generated)
+  - ✅ Updated `.env` with Supabase environment variables (placeholders for user)
+  - ✅ Added `db:types` script to `package.json`: `npm run db:types`
+  - ✅ Added `db:seed` script to `package.json`: `npm run db:seed`
+
+- **Phase 2 — Database schema (READY):**
+  - ✅ Migration file created: `supabase/migrations/001_create_projects_table.sql`
+  - ✅ Seed template created: `supabase/seeds/projects_seed_template.sql`
+  - ✅ `supabase/README.md` created with workflow documentation
+  - ✅ `supabase/IMAGE_PATHS.md` created with image path management guide
+  - ⏳ **User action required:** Execute migration in Supabase SQL Editor
+
+- **Phase 2.5 — TypeScript types (READY):**
+  - ✅ Placeholder types created in `lib/supabase/database.types.ts`
+  - ⏳ **User action required:** Run `npm run db:types` after migration to generate actual types
+
+- **Phase 3 — Code migration (COMPLETED):**
+  - ✅ Created `/api/projects.ts` endpoint with typed Supabase queries
+    - Filters by `is_visible = true`
+    - Sorts by `order_index ASC NULLS LAST` → `stars DESC` → `date_created DESC`
+    - Returns TypeScript-validated `Project[]` array
+  - ✅ Updated `components/projects/ProjectsGrid.jsx` to fetch from `/api/projects`
+  - ✅ Updated `pages/projects/[project].jsx` to use Supabase `getServerSideProps`
+    - Replaced JSON import with Supabase query
+    - Added `is_visible = true` filter for public access
+    - Maintains existing UI and gallery functionality
+
+- **Phase 4 — Data seeding (READY):**
+  - ✅ Created `scripts/seed-projects.js` with:
+    - Automatic data transformation from `github.json`
+    - Sets all projects to `is_visible = true`, `order_index = null`
+    - Uses admin client to bypass RLS
+    - Comprehensive logging and error handling
+  - ⏳ **User action required:** Run `npm run db:seed` after Supabase setup
+
+- **Phase 5 — Setup guide (COMPLETED):**
+  - ✅ Created `SUPABASE_SETUP.md` with step-by-step instructions:
+    - Supabase project creation
+    - API key configuration
+    - Project linking for type generation
+    - Migration execution
+    - Verification checklist
+    - Troubleshooting guide
+
+**Files created:**
+- `lib/supabase/client.ts` — Read-only Supabase client
+- `lib/supabase/server.ts` — Admin Supabase client
+- `lib/supabase/database.types.ts` — TypeScript type definitions
+- `pages/api/projects.ts` — New Supabase-powered API endpoint
+- `scripts/seed-projects.js` — Data import script
+- `SUPABASE_SETUP.md` — Complete setup guide
+- `supabase/IMAGE_PATHS.md` — Image path management guide
+
+**Files modified:**
+- `.env` — Added Supabase environment variables
+- `package.json` — Added `db:types` and `db:seed` scripts
+- `components/projects/ProjectsGrid.jsx` — Updated API endpoint to `/api/projects`
+- `pages/projects/[project].jsx` — Migrated to Supabase queries
+
+**Architecture changes:**
+- **Read-only app pattern:** Next.js only performs GET operations
+- **Type safety:** Full TypeScript integration with auto-generated types
+- **Hybrid sorting:** Manual order → popularity → recency
+- **Visibility control:** `is_visible` column for draft/published states
+- **Flexible images:** Supports local paths and external CDN URLs
+
+**User action required to complete setup:**
+1. ✅ Create Supabase project at https://supabase.com
+2. ✅ Update `.env` with actual Supabase credentials
+3. ✅ Run migration: Execute `supabase/migrations/001_create_projects_table.sql` in SQL Editor
+4. ✅ Link project: `npx supabase link --project-ref xxxxx`
+5. ✅ Generate types: `npm run db:types`
+6. ✅ Seed data: `npm run db:seed`
+7. ✅ Test: `npm run dev` and visit `/projects`
+
+**See:** `SUPABASE_SETUP.md` for detailed instructions.
+
+---
+
+### 2026-04-25 00:57 — Planning: Supabase migration documentation
+
+**Status:** 📋 Planning phase (now superseded by implementation above)
 
 **Objective:** Migrate from static JSON files to Supabase as the primary data source for projects.
 

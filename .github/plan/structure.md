@@ -15,14 +15,15 @@ nextjs-portfolio/
 ├── LICENSE                       # MIT
 ├── README.md                     # Setup + feature overview
 ├── SECURITY.md                   # Vulnerability reporting policy
+├── SUPABASE_SETUP.md             # Step-by-step Supabase configuration guide
 ├── components/                   # React UI components (see below)
 ├── data/                         # Static JS data sources for the UI
 ├── hooks/                        # Top-level reusable React hooks
 ├── lib/
 │   └── supabase/                 # Supabase client utilities
-│       ├── client.ts             # Read-only typed client for app
-│       ├── server.ts             # Admin typed client for seeding scripts
-│       └── database.types.ts     # Auto-generated TypeScript types (from schema)
+│       ├── client.ts             # Read-only typed client for app (browser-safe)
+│       ├── server.ts             # Admin typed client for seeding scripts (server-only)
+│       └── database.types.ts     # Auto-generated TypeScript types (run: npm run db:types)
 ├── next.config.js                # Next.js config (reactStrictMode: true)
 ├── nextjs-portfolio.code-workspace
 ├── package.json                  # Dependencies + npm scripts
@@ -34,11 +35,13 @@ nextjs-portfolio/
 ├── styles/
 │   └── globals.css               # Tailwind base + custom @font-face declarations
 ├── supabase/
-│   ├── migrations/               # Database schema version history
+│   ├── README.md                       # Supabase workflow guide
+│   ├── IMAGE_PATHS.md                  # Image path management (local vs CDN)
+│   ├── migrations/                     # Database schema version history
 │   │   ├── 001_create_projects_table.sql
 │   │   ├── 002_create_certificates_table.sql      # Future
 │   │   └── 003_create_accomplishments_table.sql   # Future
-│   └── seeds/                    # SQL templates for manual data entry
+│   └── seeds/                          # SQL templates for manual data entry
 │       ├── projects_seed_template.sql
 │       ├── certificates_seed_template.sql         # Future
 │       └── accomplishments_seed_template.sql      # Future
@@ -56,7 +59,8 @@ pages/
 ├── contact.jsx                   # /contact — ContactForm + ContactDetails (two-column)
 ├── index.jsx                     # / — AppBanner hero + Typewriter
 ├── api/
-│   └── github.js                 # /api/github — reads scripts/github.json
+│   ├── github.js                 # /api/github — reads scripts/github.json (LEGACY - to be removed)
+│   └── projects.ts               # /api/projects — Supabase-powered projects endpoint (NEW)
 ├── certificates/
 │   └── index.jsx                 # /certificates — searchable + highlightable grid
 └── projects/
@@ -136,13 +140,19 @@ public/
 │   └── profile.jpeg              # AboutMeBio portrait
 ```
 
-## `scripts/` — GitHub data pipeline (Python)
+## `scripts/` — GitHub data pipeline (Python) + Seeding (Node.js)
 
 ```
 scripts/
 ├── .gitignore
 ├── GenerateGithubInfo.py         # Pulls /users/<USERNAME>/repos → github_repos.json
 ├── generateGithubContributionChart.py  # GraphQL contributions → github_contributions.json
+├── github.json                   # Merged output (projects currently consumed by /api/github)
+├── github_contributions.json     # Contribution heatmap data
+├── github_repos.json             # Raw repo metadata
+├── requirements.txt              # python-dotenv, requests
+└── seed-projects.js              # Node.js script to import github.json → Supabase (run: npm run db:seed)
+```
 ├── github.json                   # ★ Committed dataset consumed by /api/github
 ├── github_contributions.json     # Committed contribution metrics (not yet wired to UI)
 └── requirements.txt              # requests, python-dotenv, beautifulsoup4, ...
